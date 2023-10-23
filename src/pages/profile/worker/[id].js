@@ -20,6 +20,9 @@ import { baseUrl } from "@/helpers/baseUrl";
 const ProfileWorkerPage = ({ data }) => {
 	const user = data?.user;
 	const skill = data?.skill;
+	const portfolio = data?.portfolio;
+
+	console.log(portfolio);
 
 	const role =
 		typeof window !== "undefined" ? localStorage.getItem("peworld_role") : null;
@@ -132,7 +135,7 @@ const ProfileWorkerPage = ({ data }) => {
 							</button>
 						</div>
 
-						{isTabPortfolioActive && <SectionPortfolio />}
+						{isTabPortfolioActive && <SectionPortfolio portfolio={portfolio} />}
 						{!isTabPortfolioActive && <SectionWorkExperiences />}
 					</section>
 				</div>
@@ -149,12 +152,16 @@ export async function getServerSideProps(req, res) {
 	const id = req.params.id;
 	const response = await axios.get(`${baseUrl}/user/${id}`);
 	const responseSkill = await axios.get(`${baseUrl}/skill/user-skill/${id}`);
+	const responsePortfolio = await axios.get(
+		`${baseUrl}/portfolio/user-portfolio/${id}`,
+	);
 
 	return {
 		props: {
 			data: {
 				user: response.data.data[0],
 				skill: responseSkill.data.data,
+				portfolio: responsePortfolio.data.data,
 			},
 		},
 	};
