@@ -11,8 +11,10 @@ import {
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
+import axios from "axios";
+import { baseUrl } from "@/helpers/baseUrl";
 
-const ProfileCompanyPage = () => {
+const ProfileCompanyPage = ({ data }) => {
 	return (
 		<div>
 			<Navbar />
@@ -32,19 +34,15 @@ const ProfileCompanyPage = () => {
 
 						<div>
 							<h5 className="text-black font-semibold text-2xl mt-5">
-								PT. Martabat Jaya Abadi
+								{data?.company}
 							</h5>
 
-							<h6 className="text-black mt-2">Financial</h6>
+							<h6 className="text-black mt-2">{data?.company_field}</h6>
 							<h6 className="flex justify-center items-center gap-2 mt-3">
-								<MapPinIcon className="w-3 h-3" /> Purwokerto, Jawa Tengah
+								<MapPinIcon className="w-3 h-3" /> {data?.region}
 							</h6>
 
-							<p className="mt-5">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat
-								orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus
-								fringilla, vestibulum risus at.
-							</p>
+							<p className="mt-5">{data?.description}</p>
 
 							<Link
 								href={`/profile/company/edit`}
@@ -54,18 +52,26 @@ const ProfileCompanyPage = () => {
 						</div>
 
 						<ul className="grid justify-center items-center mt-6 gap-2">
-							<li className="flex gap-3 items-center">
-								<EnvelopeIcon className="w-5 h-5" /> martabatjaya@gmail.com
-							</li>
-							<li className="flex gap-3 items-center">
-								<IdentificationIcon className="w-5 h-5" /> martabat_jaya
-							</li>
-							<li className="flex gap-3 items-center">
-								<PhoneIcon className="w-5 h-5" /> 0821-8190-1821
-							</li>
-							<li className="flex gap-3 items-center">
-								<ChatBubbleLeftIcon className="w-5 h-5" /> Martabat Jaya Abadi
-							</li>
+							{data?.email && (
+								<li className="flex gap-3 items-center">
+									<EnvelopeIcon className="w-5 h-5" /> {data?.email}
+								</li>
+							)}
+							{data?.instagram && (
+								<li className="flex gap-3 items-center">
+									<IdentificationIcon className="w-5 h-5" /> {data?.instagram}
+								</li>
+							)}
+							{data?.phone && (
+								<li className="flex gap-3 items-center">
+									<PhoneIcon className="w-5 h-5" /> {data?.phone}
+								</li>
+							)}
+							{data?.linkedin && (
+								<li className="flex gap-3 items-center">
+									<ChatBubbleLeftIcon className="w-5 h-5" /> {data?.linkedin}
+								</li>
+							)}
 						</ul>
 					</article>
 				</div>
@@ -77,3 +83,36 @@ const ProfileCompanyPage = () => {
 };
 
 export default ProfileCompanyPage;
+
+export async function getStaticProps(req, res) {
+	const id = req.params.id;
+	const response = await axios.get(`${baseUrl}/user/${id}`);
+
+	return {
+		props: {
+			data: response.data.data[0],
+		},
+		revalidate: 10,
+	};
+}
+
+export async function getStaticPaths() {
+	try {
+		const response = await axios.get(`${baseUrl}/user`);
+
+		if (response.status === 200 && response.data?.data) {
+			const paths = response.data.data.map((item) => ({
+				params: {
+					id: item.user_id.toString(),
+				},
+			}));
+
+			return {
+				paths,
+				fallback: true, // or "blocking"
+			};
+		}
+	} catch (error) {
+		console.log("error getStaticPaths: ", error);
+	}
+}
