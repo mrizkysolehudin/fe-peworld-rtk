@@ -8,25 +8,25 @@ import {
 	IdentificationIcon,
 	ChatBubbleLeftIcon,
 	UserCircleIcon,
+	PhoneIcon,
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import SectionPortfolio from "@/components/Profile/SectionPortfolio";
 import SectionWorkExperiences from "@/components/Profile/SectionWorkExperiences";
+import axios from "axios";
+import { baseUrl } from "@/helpers/baseUrl";
 
-const ProfileWorkerPage = () => {
+const ProfileWorkerPage = ({ data }) => {
+	const user = data?.user;
+	const skill = data?.skill;
+
+	const role =
+		typeof window !== "undefined" ? localStorage.getItem("peworld_role") : null;
+	const user_id =
+		typeof window !== "undefined" ? localStorage.getItem("peworld_user_id") : "";
+
 	const [isTabPortfolioActive, setIsTabPortfolioActive] = useState(true);
-
-	const skillTalents = [
-		"Java",
-		"Kotlin",
-		"PHP",
-		"JavaScript",
-		"Golang",
-		"C++",
-		"Ruby",
-		"Bahasa lainnya",
-	];
 
 	return (
 		<div>
@@ -46,57 +46,67 @@ const ProfileWorkerPage = () => {
 						</div>
 
 						<div>
-							<h5 className="text-black font-semibold text-2xl mt-5">
-								Louis Tomlinsoon
-							</h5>
+							<h5 className="text-black font-semibold text-2xl mt-5">{user?.name}</h5>
 
-							<h6 className="text-black mt-2">Web developer</h6>
+							<h6 className="text-black mt-2">{user?.job_title}</h6>
 							<h6 className="flex justify-center items-center gap-2 mt-2">
-								<MapPinIcon className="w-3 h-3" /> Purwokerto, Jawa Tengah
+								<MapPinIcon className="w-3 h-3" /> {user?.region}
 							</h6>
 
-							<h6 className="gap-2 mt-2">Freelancer</h6>
+							<h6 className="gap-2 mt-2">{user?.company}</h6>
 
-							<p className="mt-5">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat
-								orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus
-								fringilla, vestibulum risus at.
-							</p>
+							<p className="mt-5">{user?.description}</p>
 
-							<Link
-								href={`/profile/worker/edit`}
-								className="mt-6 block mx-auto rounded bg-[#5E50A1] px-3.5 pt-2 pb-2.5 w-[22vw] text-sm font-semibold text-white shadow-sm hover:bg-[#5E50A1]/90">
-								Edit profile
-							</Link>
+							{role == 0 ? (
+								<Link
+									href={`/hire/${user_id}`}
+									className="mt-6 block mx-auto rounded bg-[#5E50A1] px-3.5 pt-2 pb-2.5 w-[22vw] text-sm font-semibold text-white shadow-sm hover:bg-[#5E50A1]/90">
+									Hire
+								</Link>
+							) : (
+								<Link
+									href={`/profile/worker/edit`}
+									className="mt-6 block mx-auto rounded bg-[#5E50A1] px-3.5 pt-2 pb-2.5 w-[22vw] text-sm font-semibold text-white shadow-sm hover:bg-[#5E50A1]/90">
+									Edit profile
+								</Link>
+							)}
 						</div>
 
 						<div className="mt-10">
 							<h3 className="text-black font-semibold text-2xl">Skill</h3>
 
 							<div className="text-white w-5/12 mx-auto justify-center flex flex-wrap gap-x-3 gap-y-4 text-sm mt-5">
-								{skillTalents.map((item, index) => (
+								{skill?.map((item, index) => (
 									<span
 										key={index}
 										className="py-1 px-4 bg-[#fbb01799] hover:bg-[#FBB017]  border border-[#FBB017] rounded">
-										{item}
+										{item?.name}
 									</span>
 								))}
 							</div>
 						</div>
 
 						<ul className="grid justify-center items-center mt-9 gap-4 text-sm">
-							<li className="flex gap-3 items-center">
-								<EnvelopeIcon className="w-5 h-5" /> Louistommo@gmail.com
-							</li>
-							<li className="flex gap-3 items-center">
-								<IdentificationIcon className="w-5 h-5" /> @Louist91
-							</li>
-							<li className="flex gap-3 items-center">
-								<UserCircleIcon className="w-5 h-5" /> @Louistommo
-							</li>
-							<li className="flex gap-3 items-center">
-								<ChatBubbleLeftIcon className="w-5 h-5" /> @Louistommo91
-							</li>
+							{user?.email && (
+								<li className="flex gap-3 items-center">
+									<EnvelopeIcon className="w-5 h-5" /> {user?.email}
+								</li>
+							)}
+							{user?.instagram && (
+								<li className="flex gap-3 items-center">
+									<IdentificationIcon className="w-5 h-5" /> {user?.instagram}
+								</li>
+							)}
+							{user?.phone && (
+								<li className="flex gap-3 items-center">
+									<PhoneIcon className="w-5 h-5" /> {user?.phone}
+								</li>
+							)}
+							{user?.linkedin && (
+								<li className="flex gap-3 items-center">
+									<UserCircleIcon className="w-5 h-5" /> {user?.linkedin}
+								</li>
+							)}
 						</ul>
 					</section>
 
@@ -134,3 +144,18 @@ const ProfileWorkerPage = () => {
 };
 
 export default ProfileWorkerPage;
+
+export async function getServerSideProps(req, res) {
+	const id = req.params.id;
+	const response = await axios.get(`${baseUrl}/user/${id}`);
+	const responseSkill = await axios.get(`${baseUrl}/skill/user-skill/${id}`);
+
+	return {
+		props: {
+			data: {
+				user: response.data.data[0],
+				skill: responseSkill.data.data,
+			},
+		},
+	};
+}
