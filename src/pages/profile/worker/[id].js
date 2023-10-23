@@ -21,8 +21,9 @@ const ProfileWorkerPage = ({ data }) => {
 	const user = data?.user;
 	const skill = data?.skill;
 	const portfolio = data?.portfolio;
+	const workExperience = data?.workExperience;
 
-	console.log(portfolio);
+	console.log(workExperience);
 
 	const role =
 		typeof window !== "undefined" ? localStorage.getItem("peworld_role") : null;
@@ -136,7 +137,9 @@ const ProfileWorkerPage = ({ data }) => {
 						</div>
 
 						{isTabPortfolioActive && <SectionPortfolio portfolio={portfolio} />}
-						{!isTabPortfolioActive && <SectionWorkExperiences />}
+						{!isTabPortfolioActive && (
+							<SectionWorkExperiences workExperience={workExperience} />
+						)}
 					</section>
 				</div>
 			</main>
@@ -155,6 +158,9 @@ export async function getServerSideProps(req, res) {
 	const responsePortfolio = await axios.get(
 		`${baseUrl}/portfolio/user-portfolio/${id}`,
 	);
+	const responseWorkExperience = await axios.get(
+		`${baseUrl}/workexperience/user-workexperience/${id}`,
+	);
 
 	return {
 		props: {
@@ -162,6 +168,7 @@ export async function getServerSideProps(req, res) {
 				user: response.data.data[0],
 				skill: responseSkill.data.data,
 				portfolio: responsePortfolio.data.data,
+				workExperience: responseWorkExperience.data.data,
 			},
 		},
 	};
