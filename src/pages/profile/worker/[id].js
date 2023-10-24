@@ -23,8 +23,6 @@ const ProfileWorkerPage = ({ data }) => {
 	const portfolio = data?.portfolio;
 	const workExperience = data?.workExperience;
 
-	console.log(workExperience);
-
 	const role =
 		typeof window !== "undefined" ? localStorage.getItem("peworld_role") : null;
 	const user_id =

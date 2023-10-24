@@ -2,21 +2,28 @@ import { logoutAction } from "@/redux/reducers/authSlice";
 import { BellIcon, EnvelopeIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 const Navbar = () => {
 	const dispatch = useDispatch();
+	const hasWindow = typeof window !== "undefined";
 
+	const [token, setToken] = useState("");
+	const [role, setRole] = useState(null);
+	const [user_id, setUser_id] = useState(null);
 	const [isToggleOpen, setIsToggleOpen] = useState(false);
 
-	const token =
-		typeof window !== "undefined" ? localStorage.getItem("peworld_token") : false;
-	const role =
-		typeof window !== "undefined" ? localStorage.getItem("peworld_role") : null;
-
-	const user_id =
-		typeof window !== "undefined" ? localStorage.getItem("peworld_user_id") : "";
+	useEffect(() => {
+		if (hasWindow) {
+			const peworld_token = localStorage.getItem("peworld_token");
+			setToken(peworld_token);
+			const peworld_role = localStorage.getItem("peworld_role");
+			setRole(peworld_role);
+			const peworld_user_id = localStorage.getItem("peworld_user_id");
+			setUser_id(peworld_user_id);
+		}
+	}, [hasWindow]);
 
 	return (
 		<nav className="flex justify-between py-7 px-20 w-screen shadow-lg">
@@ -34,11 +41,11 @@ const Navbar = () => {
 					</button>
 
 					<div className="relative">
-						<span
+						<button
 							onClick={() => setIsToggleOpen(!isToggleOpen)}
 							className="rounded-full">
 							<Image src="/assets/images/avatar3.png" alt="" width={35} height={35} />
-						</span>
+						</button>
 
 						{isToggleOpen && (
 							<div className="grid bg-gray-300 absolute right-0 font-semibold rounded overflow-hidden">
@@ -47,11 +54,11 @@ const Navbar = () => {
 									className="pt-1 pb-1 px-5 hover:bg-gray-400  text-black">
 									Profile
 								</Link>
-								<span
+								<button
 									onClick={() => dispatch(logoutAction())}
-									className="bg-red-500 hover:bg-red-600 text-white pt-1 pb-2 px-5">
+									className="bg-red-500 hover:bg-red-600 text-white pt-1 pb-2 px-5 cursor-pointer">
 									Logout
-								</span>
+								</button>
 							</div>
 						)}
 					</div>
