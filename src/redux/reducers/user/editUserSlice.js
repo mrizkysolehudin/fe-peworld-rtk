@@ -19,12 +19,7 @@ export const editUserAction = createAsyncThunk(
 				return rejectWithValue("No token");
 			}
 
-			if (
-				data.name === "" ||
-				data.email === "" ||
-				data.phone === "" ||
-				image === ""
-			) {
+			if (data.name === "") {
 				Swal.fire({
 					name: "Input error",
 					text: "Please, input all data",
