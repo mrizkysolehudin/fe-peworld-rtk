@@ -16,13 +16,19 @@ import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import FormWorkExperience from "@/components/EditProfile/Worker/FormWorkExperience";
 import FormSkill from "@/components/EditProfile/Worker/FormSkill";
+import { useDispatch, useSelector } from "react-redux";
+import { getOneUserAction } from "@/redux/reducers/user/getOneUser";
+import { editUserAction } from "@/redux/reducers/user/editUserSlice";
 
 const EditProfileCompanyPage = () => {
 	const hasWindow = typeof window !== "undefined";
 	const router = useRouter();
+	const dispatch = useDispatch();
+	const currentUser = useSelector((state) => state.user.data);
 
 	const [user_id, setUser_id] = useState(null);
 	const [data, setData] = useState(null);
+	const [image, setImage] = useState("");
 
 	const handleChange = (e) => {
 		setData({
@@ -36,7 +42,28 @@ const EditProfileCompanyPage = () => {
 			const peworld_user_id = localStorage.getItem("peworld_user_id");
 			setUser_id(peworld_user_id);
 		}
-	}, [hasWindow]);
+
+		if (user_id) {
+			dispatch(getOneUserAction(user_id));
+		}
+	}, [hasWindow, user_id]);
+
+	useEffect(() => {
+		if (currentUser) {
+			setData({
+				name: currentUser?.name,
+				email: currentUser?.email,
+				phone: currentUser?.phone,
+				region: currentUser?.region,
+				job_title: currentUser?.job_title,
+				company: currentUser?.company,
+				company_field: currentUser?.company_field,
+				instagram: currentUser?.instagram,
+				linkedin: currentUser?.linkedin,
+				description: currentUser?.description,
+			});
+		}
+	}, [currentUser]);
 
 	const handleAddSkill = async (e) => {
 		e.preventDefault();
@@ -104,6 +131,10 @@ const EditProfileCompanyPage = () => {
 		}
 	};
 
+	const handleEditUser = () => {
+		dispatch(editUserAction({ data, image, router }));
+	};
+
 	return (
 		<div>
 			<Navbar />
@@ -126,25 +157,27 @@ const EditProfileCompanyPage = () => {
 									</div>
 
 									<div className="text-sm">
-										<h4 className="text-2xl font-semibold mt-10">Louis Tomlinson</h4>
+										<h4 className="text-2xl font-semibold mt-10">{currentUser?.name}</h4>
 
-										<p className="mt-2">Web Developer</p>
+										<p className="mt-2">{currentUser?.job_title}</p>
 
-										<h6 className="flex  items-center gap-2 my-5 text-gray-400">
-											<MapPinIcon className="w-[1.5vw] h-[1.5vw]" /> Purwokerto, Jawa
-											Tengah
-										</h6>
-
-										<h6 className="flex  items-center gap-2 mt-5 text-gray-400">
-											Freelancer
-										</h6>
+										{currentUser?.region && (
+											<h6 className="flex  items-center gap-2 my-5 text-gray-400">
+												<MapPinIcon className="w-[1.5vw] h-[1.5vw]" /> {currentUser?.region}
+											</h6>
+										)}
+										{currentUser?.company && (
+											<h6 className="flex  items-center gap-2 mt-5 text-gray-400">
+												{currentUser?.company}
+											</h6>
+										)}
 									</div>
 								</div>
 							</article>
 
 							<div>
 								<button
-									type="button"
+									onClick={() => handleEditUser()}
 									className="mt-7 rounded bg-[#5E50A1] px-3.5 pt-2 pb-2.5 w-full text-sm font-semibold text-white shadow-sm hover:bg-[#5E50A1]/90">
 									Simpan
 								</button>
@@ -170,7 +203,9 @@ const EditProfileCompanyPage = () => {
 											</label>
 
 											<input
-												name="password"
+												name="name"
+												onChange={handleChange}
+												value={data?.name}
 												type="text"
 												required
 												placeholder="Masukan nama lengkap"
@@ -184,9 +219,10 @@ const EditProfileCompanyPage = () => {
 											</label>
 
 											<input
-												name="email"
+												name="job_title"
+												onChange={handleChange}
+												value={data?.job_title}
 												type="text"
-												required
 												placeholder="Masukan job desk"
 												className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 											/>
@@ -198,9 +234,10 @@ const EditProfileCompanyPage = () => {
 											</label>
 
 											<input
-												name="phone"
+												name="region"
+												onChange={handleChange}
+												value={data?.region}
 												type="text"
-												required
 												placeholder="Masukan domisili"
 												className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 											/>
@@ -212,9 +249,10 @@ const EditProfileCompanyPage = () => {
 											</label>
 
 											<input
-												name="phone"
+												name="company"
+												onChange={handleChange}
+												value={data?.company}
 												type="text"
-												required
 												placeholder="Masukan tempat kerja"
 												className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 											/>
@@ -226,8 +264,10 @@ const EditProfileCompanyPage = () => {
 											</label>
 
 											<textarea
-												id="about"
-												name="about"
+												name="description"
+												onChange={handleChange}
+												value={data?.description}
+												type="text"
 												placeholder="Tuliskan deskripsi singkat"
 												className="block w-full h-[13vw] rounded-md border-0 px-3 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
 										</div>

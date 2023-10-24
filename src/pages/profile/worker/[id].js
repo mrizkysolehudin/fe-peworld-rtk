@@ -75,7 +75,9 @@ const ProfileWorkerPage = ({ data }) => {
 						</div>
 
 						<div className="mt-10">
-							<h3 className="text-black font-semibold text-2xl">Skill</h3>
+							{skill?.length > 0 && (
+								<h3 className="text-black font-semibold text-2xl">Skill</h3>
+							)}
 
 							<div className="text-white w-5/12 mx-auto justify-center flex flex-wrap gap-x-3 gap-y-4 text-sm mt-5">
 								{skill?.map((item, index) => (

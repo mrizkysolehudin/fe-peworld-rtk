@@ -1,12 +1,12 @@
+import { baseUrl } from "@/helpers/baseUrl";
+import http from "@/helpers/http";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import http from "../../../helpers/http";
-import { baseUrl } from "../../../helpers/baseUrl";
 
 export const getOneUserAction = createAsyncThunk(
 	"user/getOneUser",
 	async (id, { rejectWithValue }) => {
 		try {
-			const response = await http().get(`${baseUrl}/users/${id}`);
+			const response = await http().get(`${baseUrl}/user/${id}`);
 
 			return response.data.data[0];
 		} catch (error) {
