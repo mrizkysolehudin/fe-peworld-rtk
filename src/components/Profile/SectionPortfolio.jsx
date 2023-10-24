@@ -5,7 +5,7 @@ import NoResult from "../Global/NoResult";
 const SectionPortfolio = ({ portfolio }) => {
 	return (
 		<div className="flex mt-10 flex-wrap gap-x-4 gap-y-6">
-			{portfolio.length > 0 ? (
+			{portfolio?.length > 0 ? (
 				portfolio?.map((item, index) => (
 					<article key={index}>
 						<div className="relative w-[16vw] h-[10vw] mx-auto">

@@ -46,7 +46,7 @@ export const editUserAction = createAsyncThunk(
 					text: "Congratulations!",
 					icon: "success",
 				});
-				router.push(`/profile/${role == 0 ? "company" : "worker"}/${user_id}`);
+				router.push(`/profile/${user_id}`);
 				setTimeout(() => {
 					window.location.reload();
 				}, 1000);

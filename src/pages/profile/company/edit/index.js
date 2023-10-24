@@ -3,9 +3,61 @@ import Navbar from "@/components/Global/Navbar";
 import { MapPinIcon } from "@heroicons/react/24/outline";
 import { PencilIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getOneUserAction } from "@/redux/reducers/user/getOneUser";
+import { editUserAction } from "@/redux/reducers/user/editUserSlice";
+import { useRouter } from "next/router";
 
 const EditProfileWorkerPage = () => {
+	const hasWindow = typeof window !== "undefined";
+	const router = useRouter();
+	const dispatch = useDispatch();
+	const currentUser = useSelector((state) => state.user.data);
+
+	const [user_id, setUser_id] = useState(null);
+	const [data, setData] = useState(null);
+	const [image, setImage] = useState("");
+
+	const handleChange = (e) => {
+		setData({
+			...data,
+			[e.target.name]: e.target.value,
+		});
+	};
+
+	useEffect(() => {
+		if (hasWindow) {
+			const peworld_user_id = localStorage.getItem("peworld_user_id");
+			setUser_id(peworld_user_id);
+		}
+
+		if (user_id) {
+			dispatch(getOneUserAction(user_id));
+		}
+	}, [hasWindow, user_id]);
+
+	useEffect(() => {
+		if (currentUser) {
+			setData({
+				name: currentUser?.name,
+				email: currentUser?.email,
+				phone: currentUser?.phone,
+				region: currentUser?.region,
+				job_title: currentUser?.job_title,
+				company: currentUser?.company,
+				company_field: currentUser?.company_field,
+				instagram: currentUser?.instagram,
+				linkedin: currentUser?.linkedin,
+				description: currentUser?.description,
+			});
+		}
+	}, [currentUser]);
+
+	const handleEditUser = () => {
+		dispatch(editUserAction({ data, image, router }));
+	};
+
 	return (
 		<div>
 			<Navbar />
@@ -29,22 +81,24 @@ const EditProfileWorkerPage = () => {
 
 									<div className="text-sm">
 										<h4 className="text-2xl font-semibold mt-10">
-											PT. Martabat Jaya Abadi
+											{currentUser?.company}
 										</h4>
 
-										<p className="mt-2">Financial</p>
+										<p className="mt-2">{currentUser?.company_field}</p>
 
-										<h6 className="flex  items-center gap-2 mt-3 text-gray-400">
-											<MapPinIcon className="w-[1.5vw] h-[1.5vw]" /> Purwokerto, Jawa
-											Tengah
-										</h6>
+										{currentUser?.region && (
+											<h6 className="flex  items-center gap-2 mt-3 text-gray-400">
+												<MapPinIcon className="w-[1.5vw] h-[1.5vw]" />
+												{currentUser?.region}
+											</h6>
+										)}
 									</div>
 								</div>
 							</article>
 
 							<div>
 								<button
-									type="button"
+									onClick={() => handleEditUser()}
 									className="mt-7 rounded bg-[#5E50A1] px-3.5 pt-2 pb-2.5 w-full text-sm font-semibold text-white shadow-sm hover:bg-[#5E50A1]/90">
 									Simpan
 								</button>
@@ -70,8 +124,10 @@ const EditProfileWorkerPage = () => {
 											</label>
 
 											<input
-												name="password"
+												name="company"
 												type="text"
+												onChange={handleChange}
+												value={data?.company}
 												required
 												placeholder="Masukan nama perusahan"
 												className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -84,9 +140,10 @@ const EditProfileWorkerPage = () => {
 											</label>
 
 											<input
-												name="email"
+												name="company_field"
 												type="text"
-												required
+												onChange={handleChange}
+												value={data?.company_field}
 												placeholder="Masukan bidang perusahaan ex : Financial"
 												className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 											/>
@@ -98,9 +155,10 @@ const EditProfileWorkerPage = () => {
 											</label>
 
 											<input
-												name="phone"
+												name="region"
 												type="text"
-												required
+												onChange={handleChange}
+												value={data?.region}
 												placeholder="Masukan kota"
 												className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 											/>
@@ -112,8 +170,9 @@ const EditProfileWorkerPage = () => {
 											</label>
 
 											<textarea
-												id="about"
-												name="about"
+												name="description"
+												onChange={handleChange}
+												value={data?.description}
 												placeholder="Tuliskan deskripsi singkat"
 												className="block w-full h-[13vw] rounded-md border-0 px-3 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
 										</div>
@@ -124,9 +183,10 @@ const EditProfileWorkerPage = () => {
 											</label>
 
 											<input
-												name="phone"
+												name="email"
 												type="text"
-												required
+												onChange={handleChange}
+												value={data?.email}
 												placeholder="Masukan email"
 												className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 											/>
@@ -138,9 +198,10 @@ const EditProfileWorkerPage = () => {
 											</label>
 
 											<input
-												name="phone"
+												name="instagram"
 												type="text"
-												required
+												onChange={handleChange}
+												value={data?.instagram}
 												placeholder="Masukan nama Instagram"
 												className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 											/>
@@ -154,7 +215,8 @@ const EditProfileWorkerPage = () => {
 											<input
 												name="phone"
 												type="text"
-												required
+												onChange={handleChange}
+												value={data?.phone}
 												placeholder="Masukan nomor telepon"
 												className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 											/>
@@ -166,9 +228,10 @@ const EditProfileWorkerPage = () => {
 											</label>
 
 											<input
-												name="phone"
+												name="linkedin"
 												type="text"
-												required
+												onChange={handleChange}
+												value={data?.linkedin}
 												placeholder="Masukan nama Linkedin"
 												className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 											/>

@@ -1,14 +1,22 @@
 import Footer from "@/components/Global/Footer";
 import Navbar from "@/components/Global/Navbar";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { baseUrl } from "@/helpers/baseUrl";
 import ProfileWorker from "@/components/Profile/ProfileWorker";
 import ProfileCompany from "@/components/Profile/ProfileCompany";
 
 const ProfilePage = ({ data }) => {
-	const role =
-		typeof window !== "undefined" ? localStorage.getItem("peworld_role") : null;
+	const hasWindow = typeof window !== "undefined";
+
+	const [role, setRole] = useState("");
+
+	useEffect(() => {
+		if (hasWindow) {
+			const peworld_role = localStorage.getItem("peworld_role");
+			setRole(peworld_role);
+		}
+	}, [hasWindow]);
 
 	return (
 		<div>
