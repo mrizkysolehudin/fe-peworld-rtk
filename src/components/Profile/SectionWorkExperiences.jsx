@@ -5,7 +5,7 @@ import NoResult from "../Global/NoResult";
 const SectionWorkExperiences = ({ workExperience }) => {
 	return (
 		<div className=" mt-10 gap-5 flex flex-wrap">
-			{workExperience?.lenght > 0 ? (
+			{workExperience?.length > 0 ? (
 				workExperience?.map((item, index) => (
 					<article key={index} className="flex gap-6 w-[48%]">
 						<div className="relative w-[14vw] h-[6vw] mx-auto">

@@ -2,11 +2,13 @@ import { logoutAction } from "@/redux/reducers/authSlice";
 import { BellIcon, EnvelopeIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 const Navbar = () => {
 	const dispatch = useDispatch();
+	const router = useRouter();
 	const hasWindow = typeof window !== "undefined";
 
 	const [token, setToken] = useState("");
@@ -50,12 +52,15 @@ const Navbar = () => {
 						{isToggleOpen && (
 							<div className="grid bg-gray-300 absolute right-0 font-semibold rounded overflow-hidden">
 								<Link
-									href={`/profile/${role == 0 ? "company" : "worker"}/${user_id}`}
+									href={`/profile/${user_id}`}
 									className="pt-1 pb-1 px-5 hover:bg-gray-400  text-black">
 									Profile
 								</Link>
 								<button
-									onClick={() => dispatch(logoutAction())}
+									onClick={() => {
+										router.push("/");
+										dispatch(logoutAction());
+									}}
 									className="bg-red-500 hover:bg-red-600 text-white pt-1 pb-2 px-5 cursor-pointer">
 									Logout
 								</button>
