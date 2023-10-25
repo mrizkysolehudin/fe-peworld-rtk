@@ -6,6 +6,7 @@ import {
 	MagnifyingGlassIcon,
 	ChevronLeftIcon,
 	ChevronRightIcon,
+	ChevronDownIcon,
 } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import { MapPinIcon } from "@heroicons/react/24/outline";
@@ -23,7 +24,8 @@ const HomePage = ({ data }) => {
 	const [sort, setSort] = useState("ASC");
 	const [page, setPage] = useState(1);
 	const [search, setSearch] = useState("");
-	const limit = 5;
+	const [searchTerm, setSearchTerm] = useState("");
+	const limit = 3;
 
 	const { pagination } = users;
 
@@ -62,6 +64,16 @@ const HomePage = ({ data }) => {
 		}
 	};
 
+	const handleSearch = () => {
+		setSearch(searchTerm);
+	};
+
+	const handleKeyPress = (e) => {
+		if (e.key === "Enter") {
+			handleSearch();
+		}
+	};
+
 	return (
 		<div>
 			<Navbar />
@@ -76,10 +88,10 @@ const HomePage = ({ data }) => {
 						<div className="flex">
 							<div className="relative">
 								<input
-									name="email"
+									onKeyDown={handleKeyPress}
+									onChange={(e) => setSearchTerm(e.target.value)}
 									type="text"
-									required
-									placeholder="Search for any skill"
+									placeholder="Search..."
 									className="block w-[66vw] rounded-md px-4 h-full text-gray-900  placeholder:text-gray-400  focus:outline-none sm:text-sm sm:leading-6"
 								/>
 
@@ -91,11 +103,25 @@ const HomePage = ({ data }) => {
 							<div className="flex -pl-2">
 								<div className="h-11 w-[1px] ml-7 mr-2 bg-gray-300"></div>
 
-								<button className="flex font-semibold justify-center items-center bg-white hover:bg-gray-50 h-11 w-[8vw] gap-2 text-gray-500">
-									<ChevronUpIcon className="w-[1.1vw] h-[1.1vw] mt-1" /> Sort
-								</button>
+								{sort === "ASC" ? (
+									<button
+										onClick={() => setSort("DESC")}
+										className="flex font-semibold justify-center items-center bg-white hover:bg-gray-50 h-11 w-[8vw] gap-2 text-gray-500">
+										<ChevronUpIcon className={`w-[1.1vw] h-[1.1vw] mt-1 `} />
+										Sort
+									</button>
+								) : (
+									<button
+										onClick={() => setSort("ASC")}
+										className="flex font-semibold justify-center items-center bg-white hover:bg-gray-50 h-11 w-[8vw] gap-2 text-gray-500">
+										<ChevronDownIcon className={`w-[1.1vw] h-[1.1vw] mt-1 `} />
+										Sort
+									</button>
+								)}
 
-								<button className="rounded font-semibold flex justify-center items-center h-11 w-[8vw] ml-2 text-white bg-[#5E50A1] hover:bg-[#5E50A1]/90 ">
+								<button
+									onClick={handleSearch}
+									className="rounded font-semibold flex justify-center items-center h-11 w-[8vw] ml-2 text-white bg-[#5E50A1] hover:bg-[#5E50A1]/90 ">
 									Search
 								</button>
 							</div>
