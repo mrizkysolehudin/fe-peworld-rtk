@@ -1,6 +1,6 @@
 import Footer from "@/components/Global/Footer";
 import Navbar from "@/components/Global/Navbar";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
 	ChevronUpIcon,
 	MagnifyingGlassIcon,
@@ -10,10 +10,22 @@ import {
 import Image from "next/image";
 import { MapPinIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { baseUrl } from "@/helpers/baseUrl";
+import axios from "axios";
+import NoResult from "@/components/Global/NoResult";
 
-const HomePage = () => {
-	const skillItems = ["Phyton", "JavaScript", "PHP"];
+const HomePage = ({ data }) => {
+	const { users, skills } = data;
+	const hasWindow = typeof window !== "undefined";
 
+	const [user_id, setUser_id] = useState(0);
+
+	useEffect(() => {
+		if (hasWindow) {
+			const peworld_user_id = localStorage.getItem("peworld_user_id");
+			setUser_id(peworld_user_id);
+		}
+	}, [hasWindow]);
 	const pagination = {
 		totalPage: 5,
 		currentPage: 3,
@@ -72,116 +84,56 @@ const HomePage = () => {
 					</div>
 
 					<div className="divide-y mt-12 divide-gray-300 w-[88%] mx-auto rounded-md overflow-hidden">
-						<article className="flex justify-between bg-white px-6 py-9 items-center">
-							<div className="flex items-center justify-center gap-7">
-								<div className="w-[8vw] h-[8vw] relative mx-auto rounded-full ">
-									<Image
-										src="/assets/images/landingpage/avatar3.png"
-										fill
-										alt=""
-										className="object-cover  absolute"
-									/>
-								</div>
+						{users?.length > 0 ? (
+							users
+								?.filter((item) => item?.user_id != user_id)
+								?.map((item, index) => (
+									<article
+										key={index}
+										className="flex justify-between bg-white px-6 py-9 items-center">
+										<div className="flex items-center justify-center gap-7">
+											<div className="w-[8vw] h-[8vw] relative mx-auto rounded-full ">
+												<Image
+													src={item?.photo}
+													fill
+													alt=""
+													className="object-cover rounded-full absolute"
+													style={{ objectPosition: "top" }}
+												/>
+											</div>
 
-								<div className="text-sm">
-									<h3 className="text-xl font-semibold">Louis Tomlinson</h3>
+											<div className="text-sm">
+												<h3 className="text-xl font-semibold capitalize">{item?.name}</h3>
 
-									<p className="text-gray-400 mt-1">Web Developer</p>
-									<h6 className="flex items-center gap-1 text-gray-400 mt-1.5">
-										<MapPinIcon className="w-[1.5vw] h-[1.5vw]" /> Purwokerto, Jawa Tengah
-									</h6>
+												<p className="text-gray-400 mt-1">{item?.job_title}</p>
+												<h6 className="flex items-center gap-1 text-gray-400 mt-1.5">
+													<MapPinIcon className="w-[1.5vw] h-[1.5vw]" /> {item?.region}
+												</h6>
 
-									<div className="text-white flex flex-wrap gap-x-3 gap-y-4 pr-4 text-sm mt-5">
-										{skillItems.map((item, index) => (
-											<span
-												key={index}
-												className="py-1 px-4 bg-[#fbb01799] hover:bg-[#FBB017]  border border-[#FBB017] rounded">
-												{item}
-											</span>
-										))}
-									</div>
-								</div>
-							</div>
-							<Link
-								href={`/profile/worker/1`}
-								className="rounded-sm mr-10 flex justify-center items-center h-9 w-[10vw] ml-2 text-white bg-[#5E50A1] hover:bg-[#5E50A1]/90 ">
-								Lihat Profile
-							</Link>
-						</article>
-
-						<article className="flex justify-between bg-white px-6 py-9 items-center">
-							<div className="flex items-center justify-center gap-7">
-								<div className="w-[8vw] h-[8vw] relative mx-auto rounded-full ">
-									<Image
-										src="/assets/images/landingpage/avatar2.png"
-										fill
-										alt=""
-										className="object-cover  absolute"
-									/>
-								</div>
-
-								<div className="text-sm">
-									<h3 className="text-xl font-semibold">Niall Horan</h3>
-
-									<p className="text-gray-400 mt-1">Web Developer</p>
-									<h6 className="flex items-center gap-1 text-gray-400 mt-1.5">
-										<MapPinIcon className="w-[1.5vw] h-[1.5vw]" /> Purwokerto, Jawa Tengah
-									</h6>
-
-									<div className="text-white flex flex-wrap gap-x-3 gap-y-4 pr-4 text-sm mt-5">
-										{skillItems.map((item, index) => (
-											<span
-												key={index}
-												className="py-1 px-4 bg-[#fbb01799] hover:bg-[#FBB017] border border-[#FBB017] rounded">
-												{item}
-											</span>
-										))}
-									</div>
-								</div>
-							</div>
-							<Link
-								href={`/profile/worker/1`}
-								className="rounded-sm mr-10 flex justify-center items-center h-9 w-[10vw] ml-2 text-white bg-[#5E50A1] hover:bg-[#5E50A1]/90 ">
-								Lihat Profile
-							</Link>
-						</article>
-
-						<article className="flex justify-between bg-white px-6 py-9 items-center">
-							<div className="flex items-center justify-center gap-7">
-								<div className="w-[8vw] h-[8vw] relative mx-auto rounded-full ">
-									<Image
-										src="/assets/images/landingpage/avatar1.png"
-										fill
-										alt=""
-										className="object-cover  absolute"
-									/>
-								</div>
-
-								<div className="text-sm">
-									<h3 className="text-xl font-semibold">Harry Styles</h3>
-
-									<p className="text-gray-400 mt-1">Web Developer</p>
-									<h6 className="flex items-center gap-1 text-gray-400 mt-1.5">
-										<MapPinIcon className="w-[1.5vw] h-[1.5vw]" /> Purwokerto, Jawa Tengah
-									</h6>
-
-									<div className="text-white flex flex-wrap gap-x-3 gap-y-4 pr-4 text-sm mt-5">
-										{skillItems.map((item, index) => (
-											<span
-												key={index}
-												className="py-1 px-4 bg-[#fbb01799] hover:bg-[#FBB017] border border-[#FBB017] rounded">
-												{item}
-											</span>
-										))}
-									</div>
-								</div>
-							</div>
-							<Link
-								href={`/profile/worker/1`}
-								className="rounded-sm mr-10 flex justify-center items-center h-9 w-[10vw] ml-2 text-white bg-[#5E50A1] hover:bg-[#5E50A1]/90 ">
-								Lihat Profile
-							</Link>
-						</article>
+												<div className="text-white flex flex-wrap gap-x-3 gap-y-4 pr-4 text-sm mt-5">
+													{skills?.length > 0 &&
+														skills
+															?.filter((skillItem) => skillItem?.user_id === item?.user_id)
+															?.map((skillItem, index) => (
+																<span
+																	key={index}
+																	className="py-1 px-4 bg-[#fbb01799] hover:bg-[#FBB017] border border-[#FBB017] rounded">
+																	{skillItem?.name}
+																</span>
+															))}
+												</div>
+											</div>
+										</div>
+										<Link
+											href={`/profile/worker/${item?.user_id}`}
+											className="rounded-sm mr-10 flex justify-center items-center h-9 w-[10vw] ml-2 text-white bg-[#5E50A1] hover:bg-[#5E50A1]/90 ">
+											Lihat Profile
+										</Link>
+									</article>
+								))
+						) : (
+							<NoResult />
+						)}
 					</div>
 
 					<div className="w-full py-12 ">
@@ -224,3 +176,18 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+export async function getStaticProps(req, res) {
+	const response = await axios.get(`${baseUrl}/user/worker`);
+	const responseSkill = await axios.get(`${baseUrl}/skill`);
+
+	return {
+		props: {
+			data: {
+				users: response.data.data,
+				skills: responseSkill.data.data,
+			},
+		},
+		revalidate: 10,
+	};
+}
