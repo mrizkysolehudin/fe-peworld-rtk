@@ -7,7 +7,7 @@ const resetAddUser = createAction("user/reset/addUser");
 
 export const addUserAction = createAsyncThunk(
 	"user/addUser",
-	async ({ data, role }, { rejectWithValue, dispatch }) => {
+	async ({ data, role, router }, { rejectWithValue, dispatch }) => {
 		try {
 			if (data.password !== data.confirmPassword) {
 				Swal.fire({
@@ -46,6 +46,8 @@ export const addUserAction = createAsyncThunk(
 					icon: "success",
 				});
 
+				router.push("/login");
+
 				setTimeout(() => {
 					window.location.reload();
 				}, 1000);
@@ -53,6 +55,8 @@ export const addUserAction = createAsyncThunk(
 				dispatch(resetAddUser());
 			}
 		} catch (error) {
+			console.log(error);
+
 			Swal.fire({
 				title: "Register error",
 				text: "Please try again...",
