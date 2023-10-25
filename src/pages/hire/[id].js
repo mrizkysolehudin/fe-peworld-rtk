@@ -54,7 +54,7 @@ const HirePage = () => {
 								{skillItems.map((item, index) => (
 									<span
 										key={index}
-										className="py-1 px-4 bg-[#fbb01799] border border-[#FBB017] rounded">
+										className="py-1 px-4 bg-[#fbb01799] hover:bg-[#FBB017] border border-[#FBB017] rounded">
 										{item}
 									</span>
 								))}

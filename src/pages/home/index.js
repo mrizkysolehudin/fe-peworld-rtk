@@ -26,6 +26,7 @@ const HomePage = ({ data }) => {
 			setUser_id(peworld_user_id);
 		}
 	}, [hasWindow]);
+
 	const pagination = {
 		totalPage: 5,
 		currentPage: 3,

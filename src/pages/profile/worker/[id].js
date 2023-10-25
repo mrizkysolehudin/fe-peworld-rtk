@@ -1,6 +1,6 @@
 import Footer from "@/components/Global/Footer";
 import Navbar from "@/components/Global/Navbar";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { PencilIcon } from "@heroicons/react/24/solid";
 import {
 	MapPinIcon,
@@ -16,6 +16,7 @@ import SectionPortfolio from "@/components/Profile/SectionPortfolio";
 import SectionWorkExperiences from "@/components/Profile/SectionWorkExperiences";
 import axios from "axios";
 import { baseUrl } from "@/helpers/baseUrl";
+import { useRouter } from "next/router";
 
 const ProfileWorkerPage = ({ data }) => {
 	const user = data?.user;
@@ -23,10 +24,21 @@ const ProfileWorkerPage = ({ data }) => {
 	const portfolio = data?.portfolio;
 	const workExperience = data?.workExperience;
 
-	const role =
-		typeof window !== "undefined" ? localStorage.getItem("peworld_role") : null;
-	const user_id =
-		typeof window !== "undefined" ? localStorage.getItem("peworld_user_id") : "";
+	const hasWindow = typeof window !== "undefined";
+	const router = useRouter();
+	const { id } = router.query;
+
+	const [user_id, setUser_id] = useState(0);
+	const [role, setRole] = useState(null);
+
+	useEffect(() => {
+		if (hasWindow) {
+			const peworld_user_id = localStorage.getItem("peworld_user_id");
+			setUser_id(peworld_user_id);
+			const peworld_role = localStorage.getItem("peworld_role");
+			setRole(peworld_role);
+		}
+	}, [hasWindow]);
 
 	const [isTabPortfolioActive, setIsTabPortfolioActive] = useState(true);
 
@@ -61,16 +73,18 @@ const ProfileWorkerPage = ({ data }) => {
 
 							{role == 0 ? (
 								<Link
-									href={`/hire/${user_id}`}
+									href={`/hire/${user?.user_id}`}
 									className="mt-6 block mx-auto rounded bg-[#5E50A1] px-3.5 pt-2 pb-2.5 w-[22vw] text-sm font-semibold text-white shadow-sm hover:bg-[#5E50A1]/90">
 									Hire
 								</Link>
 							) : (
-								<Link
-									href={`/profile/worker/edit`}
-									className="mt-6 block mx-auto rounded bg-[#5E50A1] px-3.5 pt-2 pb-2.5 w-[22vw] text-sm font-semibold text-white shadow-sm hover:bg-[#5E50A1]/90">
-									Edit profile
-								</Link>
+								user_id == id && (
+									<Link
+										href={`/profile/worker/edit`}
+										className="mt-6 block mx-auto rounded bg-[#5E50A1] px-3.5 pt-2 pb-2.5 w-[22vw] text-sm font-semibold text-white shadow-sm hover:bg-[#5E50A1]/90">
+										Edit profile
+									</Link>
+								)
 							)}
 						</div>
 
