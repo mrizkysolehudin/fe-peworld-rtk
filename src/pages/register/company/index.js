@@ -1,9 +1,37 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addUserAction } from "@/redux/reducers/user/addUserSlice";
 
 const RegisterCompanyPage = () => {
+	const role = 0; //recruiter
+	const router = useRouter();
+	const dispatch = useDispatch();
+
+	const [data, setData] = useState({
+		name: "",
+		email: "",
+		phone: "",
+		password: "",
+		confirmPassword: "",
+	});
+
+	const handleChange = (e) => {
+		setData({
+			...data,
+			[e.target.name]: e.target.value,
+		});
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+
+		dispatch(addUserAction({ data, role, router }));
+	};
+
 	return (
 		<>
 			<Head>
@@ -42,7 +70,7 @@ const RegisterCompanyPage = () => {
 						et dui rhoncus auctor.
 					</p>
 
-					<form className="mt-10">
+					<form onSubmit={handleSubmit} className="mt-10">
 						<div>
 							<label className="block text-sm font-medium leading-6 text-gray-400">
 								Nama
@@ -51,6 +79,7 @@ const RegisterCompanyPage = () => {
 							<input
 								name="name"
 								type="text"
+								onChange={handleChange}
 								required
 								placeholder="Masukan nama panjang"
 								className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -64,7 +93,8 @@ const RegisterCompanyPage = () => {
 
 							<input
 								name="email"
-								type="email"
+								type="text"
+								onChange={handleChange}
 								required
 								placeholder="Masukan alamat email"
 								className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -77,8 +107,9 @@ const RegisterCompanyPage = () => {
 							</label>
 
 							<input
-								name="phone"
+								name="company"
 								type="text"
+								onChange={handleChange}
 								required
 								placeholder="Masukan nama perusahaan"
 								className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -91,9 +122,9 @@ const RegisterCompanyPage = () => {
 							</label>
 
 							<input
-								name="phone"
+								name="job_title"
 								type="text"
-								required
+								onChange={handleChange}
 								placeholder="Posisi di perusahaan Anda"
 								className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 							/>
@@ -107,6 +138,7 @@ const RegisterCompanyPage = () => {
 							<input
 								name="phone"
 								type="text"
+								onChange={handleChange}
 								required
 								placeholder="Masukan no handphone"
 								className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -121,6 +153,7 @@ const RegisterCompanyPage = () => {
 							<input
 								name="password"
 								type="password"
+								onChange={handleChange}
 								autoComplete="current-password"
 								required
 								placeholder="Masukan kata sandi"
@@ -134,8 +167,9 @@ const RegisterCompanyPage = () => {
 							</label>
 
 							<input
-								name="password"
+								name="confirmPassword"
 								type="password"
+								onChange={handleChange}
 								autoComplete="current-password"
 								required
 								placeholder="Masukan konfirmasi kata sandi"

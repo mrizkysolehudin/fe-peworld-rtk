@@ -171,6 +171,7 @@ export async function getStaticProps(req, res) {
 				workExperience: responseWorkExperience.data.data,
 			},
 		},
+		revalidate: 10,
 	};
 }
 

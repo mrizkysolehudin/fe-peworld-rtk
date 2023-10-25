@@ -60,6 +60,9 @@ const Navbar = () => {
 									onClick={() => {
 										router.push("/");
 										dispatch(logoutAction());
+										setTimeout(() => {
+											location.reload();
+										}, 400);
 									}}
 									className="bg-red-500 hover:bg-red-600 text-white pt-1 pb-2 px-5 cursor-pointer">
 									Logout

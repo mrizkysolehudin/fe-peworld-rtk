@@ -35,7 +35,7 @@ export const addUserAction = createAsyncThunk(
 			}
 
 			const response = await http().post(
-				`${baseUrl}/user/${role === 0 ? "company" : "worker"}/register`,
+				`${baseUrl}/user/${role === 0 ? "recruiter" : "worker"}/register`,
 				data,
 			);
 
