@@ -1,15 +1,17 @@
 import { logoutAction } from "@/redux/reducers/authSlice";
+import { getOneUserAction } from "@/redux/reducers/user/getOneUser";
 import { BellIcon, EnvelopeIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Navbar = () => {
+	const hasWindow = typeof window !== "undefined";
 	const dispatch = useDispatch();
 	const router = useRouter();
-	const hasWindow = typeof window !== "undefined";
+	const user = useSelector((state) => state.user.data);
 
 	const [token, setToken] = useState("");
 	const [role, setRole] = useState(null);
@@ -26,6 +28,10 @@ const Navbar = () => {
 			setUser_id(peworld_user_id);
 		}
 	}, [hasWindow]);
+
+	useEffect(() => {
+		dispatch(getOneUserAction(user_id));
+	}, [user_id]);
 
 	return (
 		<nav className="flex justify-between py-7 px-20 w-screen shadow-lg">
@@ -45,8 +51,14 @@ const Navbar = () => {
 					<div className="relative">
 						<button
 							onClick={() => setIsToggleOpen(!isToggleOpen)}
-							className="rounded-full">
-							<Image src="/assets/images/avatar3.png" alt="" width={35} height={35} />
+							className="rounded-full relative h-[35px] w-[35px]">
+							<Image
+								src={user?.photo}
+								alt="avatar"
+								fill
+								className="rounded-full object-cover absolute"
+								style={{ objectPosition: "top" }}
+							/>
 						</button>
 
 						{isToggleOpen && (

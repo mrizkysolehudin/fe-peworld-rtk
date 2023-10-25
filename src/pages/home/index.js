@@ -95,7 +95,9 @@ const HomePage = ({ data }) => {
 									className="block w-[66vw] rounded-md px-4 h-full text-gray-900  placeholder:text-gray-400  focus:outline-none sm:text-sm sm:leading-6"
 								/>
 
-								<button className="hover:bg-gray-50 p-1 absolute right-0 top-2.5">
+								<button
+									onClick={handleSearch}
+									className="hover:bg-gray-50 p-1 absolute right-0 top-2.5">
 									<MagnifyingGlassIcon className="w-[1.5vw] h-[1.5vw] text-gray-400 " />
 								</button>
 							</div>
