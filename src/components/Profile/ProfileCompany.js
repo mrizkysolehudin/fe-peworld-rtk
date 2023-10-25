@@ -26,7 +26,13 @@ const ProfileCompany = ({ data }) => {
 			<div className="bg-white w-[87vw]">
 				<article className="w-[50vw] mx-auto justify-center text-center grid  text-gray-400 -mt-[5vw] pb-60">
 					<div className="relative w-[10vw] h-[10vw] mx-auto">
-						<Image src="/assets/images/avatar3.png" alt="avatar" fill />
+						<Image
+							src={data?.photo}
+							alt="avatar"
+							fill
+							className="object-cover rounded-full "
+							style={{ objectPosition: "top" }}
+						/>
 					</div>
 
 					<div>

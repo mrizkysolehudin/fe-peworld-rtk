@@ -56,7 +56,13 @@ const ProfileWorkerPage = ({ data }) => {
 				<div className="bg-white w-[87vw] pb-16">
 					<section className="w-[50vw] mx-auto justify-center text-center grid  text-gray-400 -mt-[5vw] ">
 						<div className="relative w-[10vw] h-[10vw] mx-auto">
-							<Image src="/assets/images/avatar3.png" alt="avatar" fill />
+							<Image
+								src={user?.photo}
+								alt="avatar"
+								fill
+								className="object-cover rounded-full "
+								style={{ objectPosition: "top" }}
+							/>
 						</div>
 
 						<div>

@@ -71,7 +71,13 @@ const EditProfileWorkerPage = () => {
 								<div className="px-10 py-8">
 									<div className="grid justify-center gap-4">
 										<div className="relative w-[10vw] h-[10vw] mx-auto">
-											<Image src="/assets/images/avatar3.png" alt="avatar" fill />
+											<Image
+												src={currentUser?.photo}
+												alt="avatar"
+												fill
+												className="object-cover rounded-full "
+												style={{ objectPosition: "top" }}
+											/>
 										</div>
 
 										<button className="text-gray-400 flex items-center py-1 justify-center gap-1 font-semibold text-lg hover:bg-gray-50">
