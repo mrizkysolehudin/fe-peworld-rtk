@@ -189,6 +189,7 @@ const EditProfileCompanyPage = () => {
 								</button>
 
 								<button
+									onClick={() => router.back()}
 									type="button"
 									className="mt-4 rounded border-[#5E50A1] border px-3.5 pt-2 pb-2.5 w-full text-sm font-semibold text-[#5E50A1] shadow-sm hover:bg-gray-200">
 									Batal

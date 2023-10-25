@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUserAction } from "@/redux/reducers/user/addUserSlice";
 
@@ -10,6 +10,15 @@ const RegisterCompanyPage = () => {
 	const role = 0; //recruiter
 	const router = useRouter();
 	const dispatch = useDispatch();
+
+	const token =
+		typeof window !== "undefined" ? localStorage.getItem("peworld_token") : false;
+
+	useEffect(() => {
+		if (token) {
+			router.push("/");
+		}
+	}, [token]);
 
 	const [data, setData] = useState({
 		name: "",
