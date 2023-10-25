@@ -4,8 +4,11 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import Footer from "@/components/Global/Footer";
 import Navbar from "@/components/Global/Navbar";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function HomePage() {
+	const router = useRouter();
+
 	const skillTalents = [
 		"Java",
 		"Kotlin",
@@ -33,8 +36,8 @@ export default function HomePage() {
 								Talenta terbaik negri untuk perubahan revolusi 4.0
 							</h3>
 							<p className="w-9/12 mt-3">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
-								ipsum et dui rhoncus auctor.
+								Selamat datang di platform pencarian talenta terkemuka kami, tempat di
+								mana perusahaan berkualitas dan individu berbakat bertemu
 							</p>
 							<Link
 								href="/home"
@@ -107,7 +110,7 @@ export default function HomePage() {
 										width={24}
 										height={24}
 									/>
-									Lorem ipsum dolor sit amet.
+									Jaringan Talenta Terbaik
 								</p>
 								<p className="flex gap-3">
 									<Image
@@ -116,7 +119,7 @@ export default function HomePage() {
 										width={24}
 										height={24}
 									/>
-									Lorem ipsum dolor sit amet.
+									Pengalaman Rekrutmen yang Efisien
 								</p>
 								<p className="flex gap-3">
 									<Image
@@ -125,7 +128,7 @@ export default function HomePage() {
 										width={24}
 										height={24}
 									/>
-									Lorem ipsum dolor sit amet.
+									Kesempatan Karir yang Berharga
 								</p>
 								<p className="flex gap-3">
 									<Image
@@ -134,7 +137,7 @@ export default function HomePage() {
 										width={24}
 										height={24}
 									/>
-									Lorem ipsum dolor sit amet.
+									Membangun Masa Depan Bersama
 								</p>
 							</ul>
 						</div>
@@ -146,8 +149,8 @@ export default function HomePage() {
 								Skill Tallent
 							</h3>
 							<p className="w-9/12 mt-3">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
-								ipsum et dui rhoncus auctor.
+								Dalam mencari talenta di Peworld, Anda akan menemukan individu yang
+								memiliki beragam keterampilan dan kemampuan yang luar biasa.
 							</p>
 
 							<div className="flex gap-10">
@@ -230,8 +233,8 @@ export default function HomePage() {
 								<h3 className="text-lg font-semibold mt-2">Harry Styles</h3>
 								<h6 className="text-gray-400">Web Developer</h6>
 								<p className="text-gray-600 w-8/12 mx-auto mt-2">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
-									ipsum et dui rhoncus auctor.
+									Saya sangat terkesan dengan efisiensi Peworld dalam mencari pekerjaan
+									yang sesuai dengan keterampilan saya.
 								</p>
 							</article>
 
@@ -248,8 +251,7 @@ export default function HomePage() {
 								<h3 className="text-lg font-semibold mt-2">Niall Horan</h3>
 								<h6 className="text-gray-400">Web Developer</h6>
 								<p className="text-gray-600 w-8/12 mx-auto mt-2">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
-									ipsum et dui rhoncus auctor.
+									Saya telah berhasil berkolaborasi dengan klien melalui platform ini.
 								</p>
 							</article>
 
@@ -266,8 +268,8 @@ export default function HomePage() {
 								<h3 className="text-lg font-semibold mt-2">Louis Tomlinson</h3>
 								<h6 className="text-gray-400">Web Developer</h6>
 								<p className="text-gray-600 w-8/12 mx-auto mt-2">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
-									ipsum et dui rhoncus auctor.
+									Saya menggunakan Peworld sebagai pencari kerja dan perekrut, dan
+									platform ini selalu memberikan hasil yang memuaskan.
 								</p>
 							</article>
 						</div>
@@ -275,9 +277,13 @@ export default function HomePage() {
 
 					<section className="px-24 py-28">
 						<div className="bg-[#5E50A1] rounded-tl-2xl rounded-br-2xl flex justify-between items-center h-[18vw] px-20 w-full relative">
-							<p className="text-3xl text-white w-3/12">Lorem ipsum dolor sit amet</p>
+							<p className="text-3xl text-white w-5/12 text-center">
+								Sambutlah Masa Depan dengan Peworld
+							</p>
 
-							<button className="bg-white text-[#796EAF] h-min pt-2 pb-2.5 px-5 rounded hover:bg-slate-200 z-[1]">
+							<button
+								onClick={() => router.push("/home")}
+								className="bg-white text-[#796EAF] h-min pt-2 pb-2.5 px-5 rounded hover:bg-slate-200 z-[1]">
 								Mulai Dari Sekarang
 							</button>
 

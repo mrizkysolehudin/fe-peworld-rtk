@@ -7,14 +7,13 @@ const Footer = () => {
 			<Image src="/assets/icons/logo-white.png" alt="" width={150} height={150} />
 
 			<p className="w-3/12 mt-6">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et
-				dui rhoncus auctor.
+				Dibangun dengan dedikasi dan inovasi untuk masa depan Revolusi Industri 4.0.
 			</p>
 
 			<div className="h-[1px] w-full bg-white mt-12"></div>
 
 			<div className="flex justify-between pt-6">
-				<p>2020 Pewworld. All right reserved</p>
+				<p>© 2020 Peworld. All right reserved</p>
 
 				<div className="flex gap-16">
 					<p>Telepon</p>
