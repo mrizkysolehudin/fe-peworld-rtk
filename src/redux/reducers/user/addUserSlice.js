@@ -1,18 +1,18 @@
+import { baseUrl } from "@/helpers/baseUrl";
+import http from "@/helpers/http";
 import { createAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import http from "../../../helpers/http";
-import { baseUrl } from "../../../helpers/baseUrl";
 import Swal from "sweetalert2";
 
 const resetAddUser = createAction("user/reset/addUser");
 
 export const addUserAction = createAsyncThunk(
 	"user/addUser",
-	async ({ data }, { rejectWithValue, dispatch }) => {
+	async ({ data, role }, { rejectWithValue, dispatch }) => {
 		try {
 			if (data.password !== data.confirmPassword) {
 				Swal.fire({
 					title: "error",
-					text: "Password and confirm password must be correct. Please try again.",
+					text: "Password and confirm password must be correct. ",
 					icon: "error",
 				});
 				return rejectWithValue("Password and confirm password must be correct.");
@@ -34,7 +34,10 @@ export const addUserAction = createAsyncThunk(
 				return rejectWithValue("Input is empty");
 			}
 
-			const response = await http().post(`${baseUrl}/users/register`, data);
+			const response = await http().post(
+				`${baseUrl}/user/${role === 0 ? "company" : "worker"}/register`,
+				data,
+			);
 
 			if (response.data.data) {
 				Swal.fire({
