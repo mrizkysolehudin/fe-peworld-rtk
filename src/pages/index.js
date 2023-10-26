@@ -30,12 +30,12 @@ export default function HomePage() {
 				<Navbar />
 
 				<main className="w-[100vw]">
-					<section className="flex w-screen mt-28 px-20">
-						<div className="w-6/12 mt-[5vw]">
-							<h3 className="text-4xl font-semibold w-7/12 leading-[50px]">
+					<section className="flex flex-wrap md:flex-nowrap  w-screen mt-20 sm:mt-28 px-20">
+						<div className="sm:w-7/12 lg:mt-[5vw] order-2 md:order-1 mt-10 sm:mt-0">
+							<h3 className="text-2xl sm:text-3xl lg:text-4xl font-semibold lg:w-7/12 sm:leading-[50px]">
 								Talenta terbaik negri untuk perubahan revolusi 4.0
 							</h3>
-							<p className="w-9/12 mt-3">
+							<p className="sm:w-9/12 text-sm sm:text-base mt-3">
 								Selamat datang di platform pencarian talenta terkemuka kami, tempat di
 								mana perusahaan berkualitas dan individu berbakat bertemu
 							</p>
@@ -46,8 +46,8 @@ export default function HomePage() {
 							</Link>
 						</div>
 
-						<div className="w-6/12">
-							<div className="w-[35vw] h-[35vw] relative">
+						<div className="w-6/12 mx-auto sm:mx-0 order-1 md:order-2">
+							<div className="w-[33vw] h-[35vw] relative">
 								<Image
 									src="/assets/images/landingpage/hero.png"
 									fill
@@ -73,11 +73,11 @@ export default function HomePage() {
 						</div>
 					</section>
 
-					<section className="flex mt-40 w-screen px-28 justify-center">
-						<div className="w-6/12 pl-10 relative">
-							<div className="absolute w-[12vw] h-[12vw] -mt-[4vw] -ml-[5.5vw] bg-[#5E50A1] z-[1]"></div>
+					<section className="flex flex-wrap mt-40 w-screen px-28 justify-center">
+						<div className="w-full lg:w-6/12 sm:pl-10 relative ">
+							<div className="absolute w-[12vw] h-[12vw] -mt-[4vw] sm:ml-[12vw] lg:-ml-[5.5vw] bg-[#5E50A1] z-[1]"></div>
 
-							<div className="w-[40vw] h-[35vw] relative">
+							<div className="w-[40vw] h-[35vw] sm:w-[30vw] sm:h-[23vw]  mx-auto lg:w-[40vw] lg:h-[35vw] relative">
 								<Image
 									src="/assets/images/landingpage/hero2.png"
 									fill
@@ -97,12 +97,12 @@ export default function HomePage() {
 							</div>
 						</div>
 
-						<div className="pl-[13vw]">
-							<h3 className="text-3xl w-9/12 font-semibold">
+						<div className="md:-ml-20 lg:ml-0 lg:w-6/12 sm:pl-[13vw] mt-10 lg:mt-0">
+							<h3 className="text-2xl xl:text-3xl xl:w-9/12 font-semibold">
 								Kenapa harus mencari tallent di peworld
 							</h3>
 
-							<ul className="gap-6 grid mt-10 ">
+							<ul className="gap-6 grid mt-10 text-sm sm:text-base">
 								<p className="flex gap-3">
 									<Image
 										src="/assets/icons/checklist.svg"
@@ -143,17 +143,17 @@ export default function HomePage() {
 						</div>
 					</section>
 
-					<section className="flex w-screen mt-40 px-20 pb-32">
-						<div className="w-6/12 pt-2 pl-10">
-							<h3 className="text-4xl font-semibold w-7/12 leading-[50px]">
+					<section className="flex flex-wrap lg:flex-nowrap w-screen mt-40 sm:px-20 pb-32">
+						<div className="lg:w-7/12 pt-2 mt-16 lg:mt-0 pl-10 sm:pl-20 lg:pl-10 order-2 lg:order-1">
+							<h3 className="text-4xl font-semibold sm:w-7/12 leading-[50px]">
 								Skill Tallent
 							</h3>
-							<p className="w-9/12 mt-3">
+							<p className="lg:w-9/12 mt-3">
 								Dalam mencari talenta di Peworld, Anda akan menemukan individu yang
 								memiliki beragam keterampilan dan kemampuan yang luar biasa.
 							</p>
 
-							<div className="flex gap-10">
+							<div className="flex gap-10 text-sm sm:text-base">
 								<ul className="gap-6 grid mt-10 ">
 									{skillTalents.slice(0, 4).map((item, index) => (
 										<li key={index} className="flex gap-3">
@@ -168,7 +168,7 @@ export default function HomePage() {
 									))}
 								</ul>
 
-								<ul className="gap-6 grid mt-10 ">
+								<ul className="gap-6 grid mt-10">
 									{skillTalents.slice(4, 8).map((item, index) => (
 										<li key={index} className="flex gap-3">
 											<Image
@@ -184,7 +184,7 @@ export default function HomePage() {
 							</div>
 						</div>
 
-						<div className="w-6/12 -ml-10 relative">
+						<div className="w-6/12 ml-32 lg:-ml-10 lg:mt-12 relative order-1 lg:order-2">
 							<div className="absolute right-[6vw] -top-[4.5vw]">
 								<div className="relative w-[10vw] h-[10vw]  bg-[#FBB017] z-[1]"></div>
 							</div>
@@ -275,15 +275,15 @@ export default function HomePage() {
 						</div>
 					</section>
 
-					<section className="px-24 py-28">
-						<div className="bg-[#5E50A1] rounded-tl-2xl rounded-br-2xl flex justify-between items-center h-[18vw] px-20 w-full relative">
-							<p className="text-3xl text-white w-5/12 text-center">
+					<section className="px-5 sm:px-24 py-28">
+						<div className="bg-[#5E50A1] rounded-tl-2xl rounded-br-2xl flex justify-between items-center h-[18vw] pr-2 sm:px-20 w-full relative">
+							<p className="sm:text-xl lg:text-3xl text-white w-6/12 xl:w-4/12 text-center">
 								Sambutlah Masa Depan dengan Peworld
 							</p>
 
 							<button
 								onClick={() => router.push("/home")}
-								className="bg-white text-[#796EAF] h-min pt-2 pb-2.5 px-5 rounded hover:bg-slate-200 z-[1]">
+								className="bg-white text-[#796EAF] text-xs sm:text-base h-min pt-2 pb-2.5 px-5 rounded hover:bg-slate-200 z-[1]">
 								Mulai Dari Sekarang
 							</button>
 

@@ -34,18 +34,18 @@ const Navbar = () => {
 	}, [user_id]);
 
 	return (
-		<nav className="flex justify-between py-7 px-20 w-screen shadow-lg">
+		<nav className="flex justify-between py-7 px-10 sm:px-20 w-screen shadow-lg">
 			<Link href="/">
 				<Image src="/assets/icons/logo-indigo.svg" alt="" width={127} height={35} />
 			</Link>
 
 			{token ? (
-				<div className="gap-9 flex text-gray-400">
-					<button className="hover:bg-gray-50 px-1 rounded">
-						<BellIcon className="w-[1.8vw] h-[1.8vw]" />
+				<div className="gap-2 md:gap-9 flex text-gray-400">
+					<button className="hover:bg-gray-50 px-1 rounded hidden sm:block">
+						<BellIcon className="w-[4vw] h-[4vw] md:w-[2.5vw] md:h-[2.5vw] xl:w-[1.8vw] xl:h-[1.8vw]" />
 					</button>
-					<button className="hover:bg-gray-50 px-1 rounded">
-						<EnvelopeIcon className="w-[1.8vw] h-[1.8vw]" />
+					<button className="hover:bg-gray-50 px-1 rounded hidden sm:block">
+						<EnvelopeIcon className="w-[4vw] h-[4vw] md:w-[2.5vw] md:h-[2.5vw] xl:w-[1.8vw] xl:h-[1.8vw]" />
 					</button>
 
 					<div className="relative">
