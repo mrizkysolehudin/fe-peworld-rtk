@@ -44,7 +44,7 @@ const LoginPage = () => {
 				<title>Login | Peworld</title>
 			</Head>
 
-			<div className="px-20 pt-7 pb-10 flex w-[100vw] bg-[#F6F7F8] min-h-screen gap-16">
+			<div className="px-5 sm:px-20 pt-7 pb-10 flex w-[100vw] bg-[#F6F7F8] min-h-screen gap-16 relative">
 				<section
 					style={{
 						backgroundImage: "url('/assets/images/bg-loginregister.png')",
@@ -54,7 +54,7 @@ const LoginPage = () => {
 						borderRadius: "10px",
 						boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
 					}}
-					className="relative w-1/2 text-white grid justify-center items-center h-[95vh] ">
+					className="relative sm:w-1/2 text-white grid justify-center items-center h-[95vh] ">
 					<div className="bg-[#5E50A1]/80 absolute w-full h-full"></div>
 
 					<div className="z-[1]">
@@ -62,18 +62,18 @@ const LoginPage = () => {
 							<Image src="/assets/icons/logo.svg" alt="" width={24} height={24} />
 							<p className="ml-2">Peworld</p>
 						</div>
-						<h1 className="text-3xl w-7/12 mx-auto font-semibold">
+						<h1 className="text-3xl w-7/12 mx-auto font-semibold hidden sm:block">
 							Temukan developer berbakat & terbaik di berbagai bidang keahlian
 						</h1>
 					</div>
 				</section>
 
-				<section className="w-1/2 h-[100%] ">
+				<section className="sm:w-1/2 h-[90%] sm:h-[100%] sm:relative absolute pr-5 sm:pr-0">
 					<h3 className="text-2xl font-semibold mt-20">Halo, Pewpeople</h3>
 
-					<p className="mt-2 text-sm">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum
-						et dui rhoncus auctor.
+					<p className="mt-2 text-sm ">
+						Kami siap membantu Anda mencari talenta terbaik untuk proyek-proyek Anda.
+						Ayo mulai!
 					</p>
 
 					<form onSubmit={handleLogin} className="mt-10">
