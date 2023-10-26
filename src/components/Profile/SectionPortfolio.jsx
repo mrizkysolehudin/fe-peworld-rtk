@@ -8,10 +8,12 @@ const SectionPortfolio = ({ portfolio }) => {
 			{portfolio?.length > 0 ? (
 				portfolio?.map((item, index) => (
 					<article key={index}>
-						<div className="relative w-[16vw] h-[10vw] mx-auto">
+						<div className="relative w-[36vw] h-[20vw] sm:w-[16vw] sm:h-[10vw] mx-auto">
 							<Image src={`${item?.image}`} alt="portfolio" fill />
 						</div>
-						<p className="text-gray-800 text-center mt-1">{item?.name}</p>
+						<p className="text-gray-800 text-xs sm:text-base text-center mt-1">
+							{item?.name}
+						</p>
 					</article>
 				))
 			) : (

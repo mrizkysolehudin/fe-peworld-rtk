@@ -24,8 +24,8 @@ const ProfileCompany = ({ data }) => {
 			</div>
 
 			<div className="bg-white w-[87vw]">
-				<article className="w-[50vw] mx-auto justify-center text-center grid  text-gray-400 -mt-[5vw] pb-60">
-					<div className="relative w-[10vw] h-[10vw] mx-auto">
+				<article className="w-[80vw] lg:w-[50vw] mx-auto justify-center text-center grid  text-gray-400 -mt-[5vw] pb-20 sm:pb-60">
+					<div className="relative w-[20vw] h-[20vw] sm:w-[10vw] sm:h-[10vw] mx-auto">
 						<Image
 							src={data?.photo}
 							alt="avatar"
@@ -49,7 +49,7 @@ const ProfileCompany = ({ data }) => {
 
 						<Link
 							href={`/profile/company/edit`}
-							className="mt-8 block mx-auto rounded bg-[#5E50A1] px-3.5 pt-2 pb-2.5 w-[22vw] text-sm font-semibold text-white shadow-sm hover:bg-[#5E50A1]/90">
+							className="mt-8 block mx-auto rounded bg-[#5E50A1] px-3.5 pt-2 pb-2.5 w-[22vw] text-xs sm:text-sm font-semibold text-white shadow-sm hover:bg-[#5E50A1]/90">
 							Edit profile
 						</Link>
 					</div>

@@ -7,8 +7,8 @@ const SectionWorkExperiences = ({ workExperience }) => {
 		<div className=" mt-10 gap-5 flex flex-wrap">
 			{workExperience?.length > 0 ? (
 				workExperience?.map((item, index) => (
-					<article key={index} className="flex gap-6 w-[48%]">
-						<div className="relative w-[14vw] h-[6vw] mx-auto">
+					<article key={index} className="flex gap-6 sm:w-[48%]">
+						<div className="relative w-[24vw] h-[6vw] sm:w-[24vw] sm:h-[6vw] mx-auto">
 							<Image src="/assets/images/tokped.png" alt="work experience" fill />
 						</div>
 

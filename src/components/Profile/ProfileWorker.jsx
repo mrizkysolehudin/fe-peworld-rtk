@@ -39,8 +39,8 @@ const ProfileWorker = ({ data }) => {
 			</div>
 
 			<div className="bg-white w-[87vw] pb-16">
-				<section className="w-[50vw] mx-auto justify-center text-center grid  text-gray-400 -mt-[5vw] ">
-					<div className="relative w-[10vw] h-[10vw] mx-auto">
+				<section className="w-[80vw] lg:w-[50vw] mx-auto justify-center text-center grid  text-gray-400 -mt-[5vw] pb-20 sm:pb-60">
+					<div className="relative w-[20vw] h-[20vw] sm:w-[10vw] sm:h-[10vw] mx-auto">
 						<Image
 							src={user?.photo}
 							alt="avatar"
@@ -65,13 +65,13 @@ const ProfileWorker = ({ data }) => {
 						{role == 0 ? (
 							<Link
 								href={`/hire/${user_id}`}
-								className="mt-6 block mx-auto rounded bg-[#5E50A1] px-3.5 pt-2 pb-2.5 w-[22vw] text-sm font-semibold text-white shadow-sm hover:bg-[#5E50A1]/90">
+								className="mt-8 block mx-auto rounded bg-[#5E50A1] px-3.5 pt-2 pb-2.5 w-[22vw] text-xs sm:text-sm font-semibold text-white shadow-sm hover:bg-[#5E50A1]/90">
 								Hire
 							</Link>
 						) : (
 							<Link
 								href={`/profile/worker/edit`}
-								className="mt-6 block mx-auto rounded bg-[#5E50A1] px-3.5 pt-2 pb-2.5 w-[22vw] text-sm font-semibold text-white shadow-sm hover:bg-[#5E50A1]/90">
+								className="mt-8 block mx-auto rounded bg-[#5E50A1] px-3.5 pt-2 pb-2.5 w-[22vw] text-xs sm:text-sm font-semibold text-white shadow-sm hover:bg-[#5E50A1]/90">
 								Edit profile
 							</Link>
 						)}
@@ -82,7 +82,7 @@ const ProfileWorker = ({ data }) => {
 							<h3 className="text-black font-semibold text-2xl">Skill</h3>
 						)}
 
-						<div className="text-white w-5/12 mx-auto justify-center flex flex-wrap gap-x-3 gap-y-4 text-sm mt-5">
+						<div className="text-white sm:w-5/12 mx-auto justify-center flex flex-wrap gap-x-3 gap-y-4 text-sm mt-5">
 							{skill?.map((item, index) => (
 								<span
 									key={index}
@@ -117,8 +117,8 @@ const ProfileWorker = ({ data }) => {
 					</ul>
 				</section>
 
-				<section className="mt-16 w-[80vw] mx-auto">
-					<div className="flex gap-8 text-2xl">
+				<section className=" w-[80vw] mx-auto">
+					<div className="flex gap-8 sm:text-2xl">
 						<button
 							onClick={() => setIsTabPortfolioActive(true)}
 							className={`font-semibold text-black ${
