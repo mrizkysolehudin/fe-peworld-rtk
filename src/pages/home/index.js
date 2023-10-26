@@ -92,7 +92,7 @@ const HomePage = ({ data }) => {
 									onChange={(e) => setSearchTerm(e.target.value)}
 									type="text"
 									placeholder="Search..."
-									className="block w-[66vw] rounded-md px-4 h-full text-gray-900  placeholder:text-gray-400  focus:outline-none sm:text-sm sm:leading-6"
+									className="block text-xs sm:text-base sm:w-[66vw] rounded-md px-4 h-full text-gray-900  placeholder:text-gray-400  focus:outline-none sm:text-sm sm:leading-6"
 								/>
 
 								<button
@@ -102,20 +102,20 @@ const HomePage = ({ data }) => {
 								</button>
 							</div>
 
-							<div className="flex -pl-2">
+							<div className="flex items-center -pl-2 text-xs sm:text-base">
 								<div className="h-11 w-[1px] ml-7 mr-2 bg-gray-300"></div>
 
 								{sort === "ASC" ? (
 									<button
 										onClick={() => setSort("DESC")}
-										className="flex font-semibold justify-center items-center bg-white hover:bg-gray-50 h-11 w-[8vw] gap-2 text-gray-500">
+										className="flex font-semibold justify-center items-center bg-white hover:bg-gray-50  h-6 sm:h-11 w-[12vw] sm:w-[8vw] gap-2 text-gray-500">
 										<ChevronUpIcon className={`w-[1.1vw] h-[1.1vw] mt-1 `} />
 										Sort
 									</button>
 								) : (
 									<button
 										onClick={() => setSort("ASC")}
-										className="flex font-semibold justify-center items-center bg-white hover:bg-gray-50 h-11 w-[8vw] gap-2 text-gray-500">
+										className="flex font-semibold justify-center items-center bg-white hover:bg-gray-50  h-6 sm:h-11 w-[12vw] sm:w-[8vw] gap-2 text-gray-500">
 										<ChevronDownIcon className={`w-[1.1vw] h-[1.1vw] mt-1 `} />
 										Sort
 									</button>
@@ -123,7 +123,7 @@ const HomePage = ({ data }) => {
 
 								<button
 									onClick={handleSearch}
-									className="rounded font-semibold flex justify-center items-center h-11 w-[8vw] ml-2 text-white bg-[#5E50A1] hover:bg-[#5E50A1]/90 ">
+									className="rounded font-semibold flex justify-center items-center h-6 sm:h-11 w-[12vw] sm:w-[8vw] ml-2 text-white bg-[#5E50A1] hover:bg-[#5E50A1]/90 ">
 									Search
 								</button>
 							</div>
@@ -173,7 +173,7 @@ const HomePage = ({ data }) => {
 										</div>
 										<Link
 											href={`/profile/worker/${item?.user_id}`}
-											className="rounded-sm mr-10 flex justify-center items-center h-9 w-[10vw] ml-2 text-white bg-[#5E50A1] hover:bg-[#5E50A1]/90 ">
+											className="rounded-sm text-[0.6rem] sm:text-xs lg:text-base sm:mr-10 flex justify-center items-center h-9 px-2 sm:px-0 sm:w-[10vw] sm:ml-2 text-white bg-[#5E50A1] hover:bg-[#5E50A1]/90 ">
 											Lihat Profile
 										</Link>
 									</article>

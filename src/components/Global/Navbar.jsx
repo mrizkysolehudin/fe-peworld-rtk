@@ -34,7 +34,7 @@ const Navbar = () => {
 	}, [user_id]);
 
 	return (
-		<nav className="flex justify-between py-7 px-10 sm:px-20 w-screen shadow-lg">
+		<nav className="flex justify-between py-7 px-6 sm:px-20 w-screen shadow-lg">
 			<Link href="/">
 				<Image src="/assets/icons/logo-indigo.svg" alt="" width={127} height={35} />
 			</Link>
@@ -84,7 +84,7 @@ const Navbar = () => {
 					</div>
 				</div>
 			) : (
-				<div className="gap-5 flex">
+				<div className="gap-1 sm:gap-5 flex">
 					<Link
 						href="/login"
 						className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-[#5E50A1] shadow-sm ring-1 ring-inset ring-[#5E50A1] hover:bg-gray-50">
