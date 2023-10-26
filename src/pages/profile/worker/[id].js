@@ -54,7 +54,7 @@ const ProfileWorkerPage = ({ data }) => {
 				</div>
 
 				<div className="bg-white w-[87vw] pb-16">
-					<section className="w-[50vw] mx-auto justify-center text-center grid  text-gray-400 -mt-[5vw] ">
+					<section className="sm:w-[50vw] mx-auto justify-center text-center grid  text-gray-400 -mt-[5vw] ">
 						<div className="relative w-[10vw] h-[10vw] mx-auto">
 							<Image
 								src={user?.photo}
@@ -135,7 +135,7 @@ const ProfileWorkerPage = ({ data }) => {
 					</section>
 
 					<section className="mt-16 w-[80vw] mx-auto">
-						<div className="flex gap-8 text-2xl">
+						<div className="flex gap-8 sm:text-2xl">
 							<button
 								onClick={() => setIsTabPortfolioActive(true)}
 								className={`font-semibold text-black ${
