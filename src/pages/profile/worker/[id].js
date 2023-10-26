@@ -171,7 +171,7 @@ const ProfileWorkerPage = ({ data }) => {
 
 export default ProfileWorkerPage;
 
-export async function getStaticProps(req, res) {
+export async function getServerSideProps(req, res) {
 	const id = req.params.id;
 	const response = await axios.get(`${baseUrl}/user/${id}`);
 	const responseSkill = await axios.get(`${baseUrl}/skill/user-skill/${id}`);
@@ -193,25 +193,4 @@ export async function getStaticProps(req, res) {
 		},
 		revalidate: 10,
 	};
-}
-
-export async function getStaticPaths() {
-	try {
-		const response = await axios.get(`${baseUrl}/user`);
-
-		if (response.status === 200 && response.data?.data) {
-			const paths = response.data.data.map((item) => ({
-				params: {
-					id: item.user_id.toString(),
-				},
-			}));
-
-			return {
-				paths,
-				fallback: true, // or "blocking"
-			};
-		}
-	} catch (error) {
-		console.log("error getStaticPaths: ", error);
-	}
 }
