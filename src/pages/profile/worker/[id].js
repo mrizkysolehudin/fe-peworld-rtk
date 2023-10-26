@@ -191,6 +191,5 @@ export async function getServerSideProps(req, res) {
 				workExperience: responseWorkExperience.data.data,
 			},
 		},
-		revalidate: 10,
 	};
 }
