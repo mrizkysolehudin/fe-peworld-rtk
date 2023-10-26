@@ -150,28 +150,3 @@ const ProfileWorker = ({ data }) => {
 };
 
 export default ProfileWorker;
-
-export async function getServerSideProps(req, res) {
-	const id = req.params.id;
-	console.log(id);
-	const response = await axios.get(`${baseUrl}/user/${id}`);
-
-	const responseSkill = await axios.get(`${baseUrl}/skill/user-skill/${id}`);
-	const responsePortfolio = await axios.get(
-		`${baseUrl}/portfolio/user-portfolio/${id}`,
-	);
-	const responseWorkExperience = await axios.get(
-		`${baseUrl}/workexperience/user-workexperience/${id}`,
-	);
-
-	return {
-		props: {
-			data: {
-				user: response.data.data[0],
-				skill: responseSkill.data.data,
-				portfolio: responsePortfolio.data.data,
-				workExperience: responseWorkExperience.data.data,
-			},
-		},
-	};
-}
