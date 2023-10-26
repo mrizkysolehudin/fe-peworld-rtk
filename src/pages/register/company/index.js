@@ -47,7 +47,7 @@ const RegisterCompanyPage = () => {
 				<title>Register | Peworld</title>
 			</Head>
 
-			<div className="px-20 pt-6 pb-10 flex w-[100vw] bg-[#F6F7F8] min-h-screen gap-16">
+			<div className="px-8 sm:px-20 sm:pt-6 pb-10 flex w-[100vw] bg-[#F6F7F8] min-h-screen gap-16">
 				<section
 					style={{
 						backgroundImage: "url('/assets/images/bg-loginregister.png')",
@@ -57,7 +57,7 @@ const RegisterCompanyPage = () => {
 						borderRadius: "10px",
 						boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
 					}}
-					className="relative w-1/2 text-white grid justify-center items-center h-[95vh] ">
+					className="relative w-1/2 text-white sm:grid justify-center items-center h-[95vh] hidden">
 					<div className="bg-[#5E50A1]/80 absolute w-full h-full"></div>
 
 					<div className="z-[1]">
@@ -71,12 +71,12 @@ const RegisterCompanyPage = () => {
 					</div>
 				</section>
 
-				<section className="w-1/2 h-[100%] ">
+				<section className="sm:w-1/2 h-[100%] ">
 					<h3 className="text-2xl font-semibold mt-16">Halo, Pewpeople</h3>
 
 					<p className="mt-2 text-sm">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum
-						et dui rhoncus auctor.
+						Selamat datang di platform pencarian talenta terkemuka kami, tempat di
+						mana perusahaan berkualitas dan individu berbakat bertemu.
 					</p>
 
 					<form onSubmit={handleSubmit} className="mt-10">
