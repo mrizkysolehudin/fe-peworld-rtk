@@ -141,11 +141,11 @@ const EditProfileCompanyPage = () => {
 
 			<main className="w-screen">
 				<div className="bg-[#5E50A1] w-full h-[24vw]"></div>
-				<div className="bg-[#F6F7F8] px-32 relative h-[164vw]">
-					<div className="w-full h-full absolute -mt-[19vw] flex gap-12">
-						<section className="w-[30%]">
+				<div className="bg-[#F6F7F8] px-6 sm:px-20 lg:px-32  relative h-[474dvh] sm:h-[374dvh] lg:h-[274dvh]">
+					<div className="w-[87vw] h-full absolute -mt-[10vw] sm:-mt-[19vw] flex flex-wrap sm:flex-nowrap gap-12">
+						<section className="w-[100%] sm:w-[30%]">
 							<article className="bg-white rounded-md">
-								<div className="px-10 py-8">
+								<div className="px-3 lg:px-10 py-8">
 									<div className="grid justify-center gap-4">
 										<div className="relative w-[10vw] h-[10vw] mx-auto">
 											<Image
@@ -197,7 +197,7 @@ const EditProfileCompanyPage = () => {
 							</div>
 						</section>
 
-						<section className="w-[50%] ">
+						<section className="w-full sm:w-[55%] xl:w-[80%] ">
 							<form>
 								<article className="bg-white rounded-lg pb-12">
 									<h1 className="pt-5 px-7 text-xl font-semibold ">Data diri</h1>
