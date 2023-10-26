@@ -62,6 +62,8 @@ const EditProfileCompanyPage = () => {
 				linkedin: currentUser?.linkedin,
 				description: currentUser?.description,
 			});
+
+			setImage(currentUser?.photo);
 		}
 	}, [currentUser]);
 

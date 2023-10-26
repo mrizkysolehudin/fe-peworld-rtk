@@ -22,6 +22,7 @@ export const editUserAction = createAsyncThunk(
 
 				return rejectWithValue("Please, input name");
 			}
+			console.log(image);
 
 			const formData = new FormData();
 			formData.append("user_id", user_id);
@@ -29,7 +30,7 @@ export const editUserAction = createAsyncThunk(
 			formData.append("name", data?.name);
 			formData.append("email", data?.email);
 			formData.append("phone", data?.phone ?? "");
-			formData.append("photo", image ?? "");
+			formData.append("photo", image);
 			formData.append("region", data?.region ?? "");
 			formData.append("job_title", data?.job_title ?? "");
 			formData.append("company", data?.company ?? "");
@@ -47,9 +48,9 @@ export const editUserAction = createAsyncThunk(
 					icon: "success",
 				});
 				router.push(`/profile/${user_id}`);
-				setTimeout(() => {
-					window.location.reload();
-				}, 1000);
+				// setTimeout(() => {
+				// 	window.location.reload();
+				// }, 1000);
 
 				dispatch(resetEditUser());
 			}

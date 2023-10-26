@@ -51,6 +51,8 @@ const EditProfileWorkerPage = () => {
 				linkedin: currentUser?.linkedin,
 				description: currentUser?.description,
 			});
+
+			setImage(currentUser?.photo);
 		}
 	}, [currentUser]);
 
