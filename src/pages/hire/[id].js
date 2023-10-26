@@ -79,8 +79,8 @@ const HirePage = ({ resData }) => {
 		<div>
 			<Navbar />
 
-			<main className="w-screen flex justify-center px-8 pt-12 pb-64 bg-[#F6F7F8]">
-				<section className="w-[30%] -ml-10 h-[41rem] bg-white rounded-sm">
+			<main className="w-screen flex flex-wrap sm:flex-nowrap justify-center px-8 pt-12 pb-64 bg-[#F6F7F8]">
+				<section className=" md:w-[40%] lg:w-[30%] sm:h-[41rem] bg-white rounded-sm">
 					<div className="p-10">
 						<div className="relative w-[10vw] h-[10vw] mx-auto">
 							<Image src="/assets/images/avatar3.png" alt="avatar" fill />
@@ -122,8 +122,8 @@ const HirePage = ({ resData }) => {
 					</div>
 				</section>
 
-				<section className="w-7/12 ">
-					<div className="w-9/12 mx-auto">
+				<section className="sm:w-7/12 mt-20 sm:mt-0">
+					<div className="sm:w-9/12 mx-auto">
 						<h2 className="font-semibold text-4xl">Hubungi {user?.name}</h2>
 
 						<p className="text-lg text-gray-500 mt-3">
