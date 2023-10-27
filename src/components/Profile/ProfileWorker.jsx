@@ -136,7 +136,7 @@ const ProfileWorker = ({ data }) => {
 					</div>
 
 					{isTabPortfolioActive && (
-						<SectionPortfolio portfolio={portfolio} user={user} />
+						<SectionPortfolio portfolio={portfolio} user_id={user_id} />
 					)}
 					{!isTabPortfolioActive && (
 						<SectionWorkExperiences workExperience={workExperience} />
