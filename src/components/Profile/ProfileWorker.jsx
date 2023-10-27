@@ -1,5 +1,3 @@
-import Footer from "@/components/Global/Footer";
-import Navbar from "@/components/Global/Navbar";
 import React, { useState } from "react";
 import { PencilIcon } from "@heroicons/react/24/solid";
 import {
@@ -12,8 +10,6 @@ import {
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
-import axios from "axios";
-import { baseUrl } from "@/helpers/baseUrl";
 import SectionPortfolio from "./SectionPortfolio";
 import SectionWorkExperiences from "./SectionWorkExperiences";
 
@@ -139,7 +135,9 @@ const ProfileWorker = ({ data }) => {
 						</button>
 					</div>
 
-					{isTabPortfolioActive && <SectionPortfolio portfolio={portfolio} />}
+					{isTabPortfolioActive && (
+						<SectionPortfolio portfolio={portfolio} user={user} />
+					)}
 					{!isTabPortfolioActive && (
 						<SectionWorkExperiences workExperience={workExperience} />
 					)}
