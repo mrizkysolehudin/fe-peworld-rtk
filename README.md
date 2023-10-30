@@ -1,14 +1,12 @@
-<h1 align="center">Peworld Web Application</h1>
-
 <div align="center">
  <img height="150" width="250" src="https://github.com/mrizkysolehudin/fe-peworld-rtk/blob/master/public/assets/icons/logo-indigo.svg"  />
 </div>
 
-<br />
-
-## About Peworld Application
+# Peworld Web Application
 
 Peworld is a leading platform for finding and connecting the best talents with quality companies. We are committed to shaping the future in the Fourth Industrial Revolution by providing access to the finest talent network and an efficient recruitment experience.
+
+<br />
 
 ## Built with
 
@@ -33,11 +31,10 @@ Peworld is a leading platform for finding and connecting the best talents with q
         "pg": "^8.11.3"
 ```
 
-## ENV example
+## Environment Variables
 
 ```bash
 NEXT_PUBLIC_BACKEND_API_URL=
-
 
 
 # backend nextjs
@@ -52,6 +49,32 @@ NEXT_PUBLIC_JWT_SECRET_KEY=
 NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
 NEXT_PUBLIC_CLOUDINARY_API_KEY=
 NEXT_PUBLIC_CLOUDINARY_API_SECRET=
+```
+
+## Installation
+
+Clone the project
+
+```bash
+  git clone https://link-to-project
+```
+
+Go to the project directory
+
+```bash
+  cd my-project
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the project
+
+```bash
+  npm start
 ```
 
 ## Screenshots
