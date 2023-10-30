@@ -17,18 +17,18 @@ Peworld is a leading platform for finding and connecting the best talents with q
 ## Package dependencies
 
 ```bash
-		"next": "13.5.4",
-		"@heroicons/react": "^2.0.18",
-		"sweetalert2": "^11.7.32",
+  "next": "13.5.4",
+  "@heroicons/react": "^2.0.18",
+  "sweetalert2": "^11.7.32",
 
-        "@reduxjs/toolkit": "^1.9.7",
-		"redux-persist": "^6.0.0",
-		"react-redux": "^8.1.3",
-        "axios": "^1.5.1",
-		"react": "^18",
-		"react-dom": "^18",
+  "@reduxjs/toolkit": "^1.9.7",
+  "redux-persist": "^6.0.0",
+  "react-redux": "^8.1.3",
+  "axios": "^1.5.1",
+  "react": "^18",
+  "react-dom": "^18",
 
-        "pg": "^8.11.3"
+  "pg": "^8.11.3"
 ```
 
 ## Environment Variables
