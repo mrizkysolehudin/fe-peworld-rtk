@@ -1,8 +1,9 @@
+<h1 align="center">Peworld Web Application</h1>
+
 <div align="center">
  <img height="150" width="250" src="https://github.com/mrizkysolehudin/fe-peworld-rtk/blob/master/public/assets/icons/logo-indigo.svg"  />
 </div>
 
-<h1 align="center">Peworld Web Application</h1>
 <br />
 
 ## About Peworld Application
