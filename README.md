@@ -56,17 +56,17 @@ NEXT_PUBLIC_CLOUDINARY_API_SECRET=
 
 ## Screenshots
 
-| Register Page                                                                                                 | Login Page                                                                                              |
-| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| ![Register](https://github.com/mrizkysolehudin/fe-peworld-rtk/blob/master/public/assets/screens/Register.png) | ![Login](https://github.com/mrizkysolehudin/fe-peworld-rtk/blob/master/public/assets/screens/Login.png) |
+| Register Page                                                                                                      | Login Page                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| ![Register](https://github.com/mrizkysolehudin/fe-peworld-rtk/blob/master/public/assets/screens/register-page.png) | ![Login](https://github.com/mrizkysolehudin/fe-peworld-rtk/blob/master/public/assets/screens/login-page.png) |
 
 | Landing Page                                                                                                            | Home Page                                                                                                  |
 | ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | ![Landing Page](https://github.com/mrizkysolehudin/fe-peworld-rtk/blob/master/public/assets/screens/Landing%20page.png) | ![Home Page](https://github.com/mrizkysolehudin/fe-peworld-rtk/blob/master/public/assets/screens/Home.png) |
 
-| Profile Recruiter Page                                                                                                                 | Edit Profile Recruiter Page                                                                                                              |
-| -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Profile Recruiter Page](https://github.com/mrizkysolehudin/fe-peworld-rtk/blob/master/public/assets/screens/Profile%20Recruiter.png) | ![Edit Profile Recruiter Page](https://github.com/mrizkysolehudin/fe-peworld-rtk/blob/master/public/assets/screens/Edit%20Recruiter.png) |
+| Profile Recruiter Page                                                                                                               | Edit Profile Recruiter Page                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Profile Recruiter Page](https://github.com/mrizkysolehudin/fe-peworld-rtk/blob/master/public/assets/screens/profile-recruiter.png) | ![Edit Profile Recruiter Page](https://github.com/mrizkysolehudin/fe-peworld-rtk/blob/master/public/assets/screens/Edit%20Recruiter.png) |
 
 | Profile Worker Page                                                                                                              | Edit Profile Worker Page                                                                                                           |
 | -------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
