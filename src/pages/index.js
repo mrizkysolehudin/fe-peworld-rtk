@@ -212,14 +212,6 @@ export default function HomePage() {
 						</h1>
 
 						<div className="pt-10 flex justify-center gap-6 relative">
-							<button className="bg-[#5E50A1] hover:bg-[#5E50A1]/90 h-min absolute z-[1] left-[7vw] top-[14vw] p-2 rounded-full">
-								<ChevronLeftIcon className="h-8 w-8 text-white" />
-							</button>
-
-							<button className="bg-[#5E50A1] hover:bg-[#5E50A1]/90 h-min absolute z-[1] right-[7vw] top-[14vw] p-2 rounded-full">
-								<ChevronRightIcon className="h-8 w-8 text-white" />
-							</button>
-
 							<article className="text-sm w-3/12 px-10 bg-white shadow text-center py-8">
 								<div className="w-[8vw] h-[8vw] relative border-[6px] border-[#fbb0175e] mx-auto rounded-full ">
 									<Image
