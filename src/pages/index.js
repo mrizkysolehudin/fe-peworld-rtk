@@ -33,7 +33,7 @@ export default function HomePage() {
 					<section className="flex flex-wrap md:flex-nowrap  w-screen mt-20 sm:mt-28 px-20">
 						<div className="sm:w-7/12 lg:mt-[5vw] order-2 md:order-1 mt-10 sm:mt-0">
 							<h3 className="text-2xl sm:text-3xl lg:text-4xl font-semibold lg:w-7/12 sm:leading-[50px]">
-								Talenta terbaik negri untuk perubahan revolusi 4.0
+								Talenta terbaik Negri untuk Perubahan Revolusi 4.0
 							</h3>
 							<p className="sm:w-9/12 text-sm sm:text-base mt-3">
 								Selamat datang di platform pencarian talenta terkemuka kami, tempat di
@@ -99,7 +99,7 @@ export default function HomePage() {
 
 						<div className="md:-ml-20 lg:ml-0 lg:w-6/12 sm:pl-[13vw] mt-10 lg:mt-0">
 							<h3 className="text-2xl xl:text-3xl xl:w-9/12 font-semibold">
-								Kenapa harus mencari tallent di peworld
+								Kenapa Harus Mencari Talent di Peworld
 							</h3>
 
 							<ul className="gap-6 grid mt-10 text-sm sm:text-base">
@@ -146,7 +146,7 @@ export default function HomePage() {
 					<section className="flex flex-wrap lg:flex-nowrap w-screen mt-40 sm:px-20 pb-32">
 						<div className="lg:w-7/12 pt-2 mt-16 lg:mt-0 pl-10 sm:pl-20 lg:pl-10 order-2 lg:order-1">
 							<h3 className="text-4xl font-semibold sm:w-7/12 leading-[50px]">
-								Skill Tallent
+								Skill Talent
 							</h3>
 							<p className="lg:w-9/12 mt-3">
 								Dalam mencari talenta di Peworld, Anda akan menemukan individu yang
@@ -208,7 +208,7 @@ export default function HomePage() {
 
 					<section className="px-20 bg-[#FAFBFC] py-24 ">
 						<h1 className="text-4xl text-center font-semibold">
-							Their opinion about peworld
+							Their Opinion About Peworld
 						</h1>
 
 						<div className="pt-10 flex justify-center gap-6 relative">
