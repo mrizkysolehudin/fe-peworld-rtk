@@ -33,7 +33,7 @@ export default function HomePage() {
 					<section className="flex flex-wrap md:flex-nowrap  w-screen mt-20 sm:mt-28 px-20">
 						<div className="sm:w-7/12 lg:mt-[5vw] order-2 md:order-1 mt-10 sm:mt-0">
 							<h3 className="text-2xl sm:text-3xl lg:text-4xl font-semibold lg:w-7/12 sm:leading-[50px]">
-								Talenta terbaik Negri untuk Perubahan Revolusi 4.0
+								Talenta Terbaik Negri untuk Perubahan Revolusi 4.0
 							</h3>
 							<p className="sm:w-9/12 text-sm sm:text-base mt-3">
 								Selamat datang di platform pencarian talenta terkemuka kami, tempat di
