@@ -74,11 +74,6 @@ const HomePage = ({ data }) => {
 		}
 	};
 
-	const handleClick = (route) => {
-		router.push(route);
-		location.reload();
-	};
-
 	return (
 		<div>
 			<Navbar />

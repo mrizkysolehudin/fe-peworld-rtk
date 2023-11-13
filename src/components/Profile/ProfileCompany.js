@@ -36,11 +36,10 @@ const ProfileCompany = ({ data }) => {
 					</div>
 
 					<div>
-						<h5 className="text-black font-semibold text-2xl mt-5">
-							{data?.company}
-						</h5>
+						<h5 className="text-black font-semibold text-2xl mt-5">{data?.name}</h5>
 
-						<h6 className="text-black mt-2">{data?.company_field}</h6>
+						<h6 className="text-black mt-4">{data?.company_field}</h6>
+						<h6 className="text-black">{data?.company}</h6>
 						<h6 className="flex justify-center items-center gap-2 mt-3">
 							<MapPinIcon className="w-3 h-3" /> {data?.region}
 						</h6>

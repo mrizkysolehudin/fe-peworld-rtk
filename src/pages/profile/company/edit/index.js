@@ -88,10 +88,9 @@ const EditProfileWorkerPage = () => {
 									</div>
 
 									<div className="text-sm">
-										<h4 className="text-2xl font-semibold mt-10">
-											{currentUser?.company}
-										</h4>
+										<h4 className="text-2xl font-semibold mt-10">{currentUser?.name}</h4>
 
+										<p className="mt-2">{currentUser?.company}</p>
 										<p className="mt-2">{currentUser?.company_field}</p>
 
 										{currentUser?.region && (
@@ -128,6 +127,22 @@ const EditProfileWorkerPage = () => {
 
 									<div className="px-7 mt-5">
 										<div>
+											<label className="block text-sm font-medium leading-6 text-gray-400">
+												Nama
+											</label>
+
+											<input
+												name="name"
+												type="text"
+												onChange={handleChange}
+												value={data?.name}
+												required
+												placeholder="Masukan nama perusahan"
+												className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+											/>
+										</div>
+
+										<div className="mt-5">
 											<label className="block text-sm font-medium leading-6 text-gray-400">
 												Nama Perusahaan
 											</label>
