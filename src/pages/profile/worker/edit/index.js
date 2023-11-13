@@ -141,9 +141,9 @@ const EditProfileCompanyPage = () => {
 		<div>
 			<Navbar />
 
-			<main className="w-screen">
+			<main className="w-screen ">
 				<div className="bg-[#5E50A1] w-full h-[24vw]"></div>
-				<div className="bg-[#F6F7F8] px-6 sm:px-20 lg:px-32  relative h-[474dvh] sm:h-[374dvh] lg:h-[274dvh]">
+				<div className="bg-[#F6F7F8] px-6 sm:px-20 lg:px-32  relative h-[474dvh] sm:h-[374dvh] lg:h-[354dvh]">
 					<div className="w-[87vw] h-full absolute -mt-[10vw] sm:-mt-[19vw] flex flex-wrap sm:flex-nowrap gap-12">
 						<section className="w-[100%] sm:w-[30%]">
 							<article className="bg-white rounded-md">
