@@ -79,11 +79,16 @@ const HirePage = ({ resData }) => {
 		<div>
 			<Navbar />
 
-			<main className="w-screen flex flex-wrap sm:flex-nowrap justify-center px-8 pt-12 pb-64 bg-[#F6F7F8]">
+			<main className="w-screen flex flex-wrap sm:flex-nowrap justify-center px-8 pt-12 pb-20 bg-[#F6F7F8]">
 				<section className=" md:w-[40%] lg:w-[30%] sm:h-[41rem] bg-white rounded-sm">
 					<div className="p-10">
 						<div className="relative w-[10vw] h-[10vw] mx-auto">
-							<Image src="/assets/images/avatar3.png" alt="avatar" fill />
+							<Image
+								src={user?.photo}
+								alt="avatar"
+								fill
+								className="rounded-full object-cover"
+							/>
 						</div>
 
 						<div className="text-sm">
