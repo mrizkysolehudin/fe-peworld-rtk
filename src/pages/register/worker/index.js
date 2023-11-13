@@ -47,7 +47,7 @@ const RegisterWorkerPage = () => {
 				<title>Register | Peworld</title>
 			</Head>
 
-			<div className="px-8 sm:px-20 pt-6 pb-10 flex w-[100vw] bg-[#F6F7F8] min-h-screen gap-16">
+			<div className="px-8 sm:px-20 pt-8 pb-10 flex w-[100vw] bg-[#F6F7F8] min-h-screen gap-16">
 				<section
 					style={{
 						backgroundImage: "url('/assets/images/bg-loginregister.png')",
@@ -72,7 +72,7 @@ const RegisterWorkerPage = () => {
 				</section>
 
 				<section className="sm:w-1/2 h-[100%] ">
-					<h3 className="text-2xl font-semibold mt-16">Halo, Pewpeople</h3>
+					<h3 className="text-2xl font-semibold ">Halo, Pewpeople</h3>
 
 					<p className="mt-2 text-sm">
 						Selamat datang di platform pencarian talenta terkemuka kami, tempat di
