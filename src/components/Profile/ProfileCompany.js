@@ -1,5 +1,3 @@
-import Footer from "@/components/Global/Footer";
-import Navbar from "@/components/Global/Navbar";
 import React from "react";
 import { PencilIcon } from "@heroicons/react/24/solid";
 import {
@@ -11,8 +9,6 @@ import {
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
-import axios from "axios";
-import { baseUrl } from "@/helpers/baseUrl";
 
 const ProfileCompany = ({ data }) => {
 	return (
