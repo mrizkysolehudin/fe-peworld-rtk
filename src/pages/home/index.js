@@ -92,7 +92,7 @@ const HomePage = ({ data }) => {
 									onChange={(e) => setSearchTerm(e.target.value)}
 									type="text"
 									placeholder="Search..."
-									className="block text-xs sm:text-base sm:w-[66vw] rounded-md px-4 h-full text-gray-900  placeholder:text-gray-400  focus:outline-none sm:text-sm sm:leading-6"
+									className="block text-xs  sm:w-[66vw] rounded-md px-4 h-full text-gray-900  placeholder:text-gray-400  focus:outline-none sm:text-sm sm:leading-6"
 								/>
 
 								<button
@@ -130,7 +130,7 @@ const HomePage = ({ data }) => {
 						</div>
 					</div>
 
-					<div className="divide-y mt-12 divide-gray-300 w-[88%] mx-auto rounded-md overflow-hidden min-h-[100vh]">
+					<div className="divide-y mt-12 divide-gray-300 w-[88%] mx-auto rounded-md overflow-hidden min-h-[85vh]">
 						{users?.data?.length > 0 ? (
 							users?.data
 								?.filter((item) => item?.user_id != user_id)
