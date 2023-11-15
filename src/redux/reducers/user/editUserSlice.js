@@ -22,7 +22,6 @@ export const editUserAction = createAsyncThunk(
 
 				return rejectWithValue("Please, input name");
 			}
-			console.log(image);
 
 			const formData = new FormData();
 			formData.append("user_id", user_id);

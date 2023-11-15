@@ -18,12 +18,24 @@ const EditProfileWorkerPage = () => {
 	const [user_id, setUser_id] = useState(null);
 	const [data, setData] = useState(null);
 	const [image, setImage] = useState("");
+	const [showImage, setShowImage] = useState("");
 
 	const handleChange = (e) => {
 		setData({
 			...data,
 			[e.target.name]: e.target.value,
 		});
+	};
+
+	const handleChangeImage = (e) => {
+		const file = e.target.files[0];
+		const reader = new FileReader();
+		reader.onload = () => {
+			setShowImage(reader.result);
+		};
+		reader.readAsDataURL(file);
+
+		setImage(file);
 	};
 
 	useEffect(() => {
@@ -52,7 +64,7 @@ const EditProfileWorkerPage = () => {
 				description: currentUser?.description,
 			});
 
-			setImage(currentUser?.photo);
+			setShowImage(currentUser?.photo);
 		}
 	}, [currentUser]);
 
@@ -74,7 +86,7 @@ const EditProfileWorkerPage = () => {
 									<div className="grid justify-center gap-4">
 										<div className="relative w-[10vw] h-[10vw] mx-auto">
 											<Image
-												src={currentUser?.photo}
+												src={showImage}
 												alt="avatar"
 												fill
 												className="object-cover rounded-full "
@@ -82,9 +94,16 @@ const EditProfileWorkerPage = () => {
 											/>
 										</div>
 
-										<button className="text-gray-400 flex items-center py-1 justify-center gap-1 font-semibold text-lg hover:bg-gray-50">
-											<PencilIcon className="w-[1.5vw] h-[1.5vw]" /> Edit
-										</button>
+										<div className="relative flex w-[10vw] justify-center group">
+											<button className="text-gray-400 flex items-center py-1 px-8 justify-center gap-1 font-semibold text-lg group-hover:bg-gray-50">
+												<PencilIcon className="w-[1.5vw] h-[1.5vw]" /> Edit
+											</button>
+											<input
+												type="file"
+												onChange={handleChangeImage}
+												className="absolute opacity-0 w-[10vw] "
+											/>
+										</div>
 									</div>
 
 									<div className="text-sm">
