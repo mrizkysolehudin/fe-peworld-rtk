@@ -26,7 +26,7 @@ export default function HomePage() {
 				<title>Peworld</title>
 			</Head>
 
-			<div>
+			<div className="relative">
 				<Navbar />
 
 				<main className="w-[100vw]">

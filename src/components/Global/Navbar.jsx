@@ -17,6 +17,7 @@ const Navbar = () => {
 	const [role, setRole] = useState(null);
 	const [user_id, setUser_id] = useState(null);
 	const [isToggleOpen, setIsToggleOpen] = useState(false);
+	const [openModalRegister, setOpenModalRegister] = useState(false);
 
 	useEffect(() => {
 		if (hasWindow) {
@@ -90,11 +91,38 @@ const Navbar = () => {
 						className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-[#5E50A1] shadow-sm ring-1 ring-inset ring-[#5E50A1] hover:bg-gray-50">
 						Masuk
 					</Link>
-					<Link
-						href="/register/worker"
+					<button
+						onClick={() => setOpenModalRegister(true)}
 						className="rounded-md bg-[#5E50A1] px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-[#5E50A1]/90">
 						Daftar
-					</Link>
+					</button>
+
+					{openModalRegister && (
+						<div
+							onClick={() => setOpenModalRegister(false)}
+							className="absolute top-0 left-0 w-screen h-screen bg-black/20 z-10">
+							<div
+								onClick={(e) => e.stopPropagation()}
+								className="flex relative justify-center mt-40 gap-10 text-white text-sm bg-white w-[90vw] sm:w-min mx-auto px-20 py-10 rounded">
+								<button
+									onClick={() => setOpenModalRegister(false)}
+									className="absolute -top-3 -right-3 px-2.5 py-1 rounded-full bg-red-500 hover:bg-red-600">
+									X
+								</button>
+
+								<Link
+									href="/register/worker"
+									className="shadow-xl bg-[#5E50A1]/80 hover:bg-[#5E50A1] py-4 px-3 rounded w-[22vw] text-center">
+									Akun Pekerja
+								</Link>
+								<Link
+									href="/register/company"
+									className="shadow-xl bg-[#5E50A1]/80 hover:bg-[#5E50A1] py-4 px-3 rounded w-[22vw] text-center">
+									Akun Rekruter
+								</Link>
+							</div>
+						</div>
+					)}
 				</div>
 			)}
 		</nav>
