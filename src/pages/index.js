@@ -211,8 +211,8 @@ export default function HomePage() {
 							Their Opinion About Peworld
 						</h1>
 
-						<div className="pt-10 flex justify-center gap-6 relative">
-							<article className="text-sm w-3/12 px-10 bg-white shadow text-center py-8">
+						<div className="pt-10 flex flex-wrap justify-center gap-6 relative">
+							<article className="text-sm md:w-5/12 md:h-[44vw] lg:h-auto lg:w-3/12 px-10 bg-white shadow text-center py-8">
 								<div className="w-[8vw] h-[8vw] relative border-[6px] border-[#fbb0175e] mx-auto rounded-full ">
 									<Image
 										src="/assets/images/landingpage/avatar1.png"
@@ -224,13 +224,13 @@ export default function HomePage() {
 
 								<h3 className="text-lg font-semibold mt-2">Harry Styles</h3>
 								<h6 className="text-gray-400">Web Developer</h6>
-								<p className="text-gray-600 w-8/12 mx-auto mt-2">
+								<p className="text-gray-600 md:w-8/12 mx-auto mt-2">
 									Saya sangat terkesan dengan efisiensi Peworld dalam mencari pekerjaan
 									yang sesuai dengan keterampilan saya.
 								</p>
 							</article>
 
-							<article className="text-sm w-3/12 px-10 bg-white shadow text-center py-8">
+							<article className="text-sm md:w-5/12 md:h-[44vw] lg:h-auto lg:w-3/12 px-10 bg-white shadow text-center py-8">
 								<div className="w-[8vw] h-[8vw] relative border-[6px] border-[#fbb0175e] mx-auto rounded-full ">
 									<Image
 										src="/assets/images/landingpage/avatar2.png"
@@ -242,12 +242,12 @@ export default function HomePage() {
 
 								<h3 className="text-lg font-semibold mt-2">Niall Horan</h3>
 								<h6 className="text-gray-400">Web Developer</h6>
-								<p className="text-gray-600 w-8/12 mx-auto mt-2">
+								<p className="text-gray-600 md:w-8/12 mx-auto mt-2">
 									Saya telah berhasil berkolaborasi dengan klien melalui platform ini.
 								</p>
 							</article>
 
-							<article className="text-sm w-3/12 px-10 bg-white shadow text-center py-8">
+							<article className="text-sm w-3/12 px-10 bg-white shadow text-center py-8 hidden lg:block">
 								<div className="w-[8vw] h-[8vw] relative border-[6px] border-[#fbb0175e] mx-auto rounded-full ">
 									<Image
 										src="/assets/images/landingpage/avatar3.png"
